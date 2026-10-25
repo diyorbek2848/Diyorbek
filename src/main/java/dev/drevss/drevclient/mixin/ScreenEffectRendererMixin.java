@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ScreenEffectRenderer.class)
 public class ScreenEffectRendererMixin {
     @Inject(method = "renderFire(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)V",
-        at = @At("HEAD"), cancellable = true)
+        at = @At("HEAD"), cancellable = true, require = 0)
     private static void drev$fire(PoseStack matrices, MultiBufferSource buffers, TextureAtlasSprite sprite, CallbackInfo ci) {
         if (DrevClient.get() == null) return;
         NoRender nr = DrevClient.get().modules().get(NoRender.class);

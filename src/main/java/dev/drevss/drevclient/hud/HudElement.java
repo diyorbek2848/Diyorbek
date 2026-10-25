@@ -6,6 +6,12 @@ import net.minecraft.client.gui.GuiGraphics;
 public abstract class HudElement {
     protected static final Minecraft mc = Minecraft.getInstance();
 
+    /**
+     * Position convention: x/y >= 0 are pixels from the left/top. Negative
+     * values anchor to the right/bottom edge (-1 = flush). CENTER centers x.
+     */
+    public static final int CENTER = Integer.MIN_VALUE;
+
     private final String name;
     private int x, y;
     private boolean visible;
@@ -34,15 +40,17 @@ public abstract class HudElement {
         this.y = y;
     }
 
-    /** Keeps the element on screen after resizing. */
+    /** Resolves anchors and keeps the element on screen after resizing. */
     public int drawX() {
         int sw = mc.getWindow().getGuiScaledWidth();
-        return Math.max(0, Math.min(x, sw - width));
+        int rx = x == CENTER ? (sw - width) / 2 : x < 0 ? sw - width + x + 1 - 2 : x;
+        return Math.max(0, Math.min(rx, sw - width));
     }
 
     public int drawY() {
         int sh = mc.getWindow().getGuiScaledHeight();
-        return Math.max(0, Math.min(y, sh - height));
+        int ry = y < 0 ? sh - height + y + 1 - 1 : y;
+        return Math.max(0, Math.min(ry, sh - height));
     }
 
     /** True when the element sits on the right half (text aligns right). */

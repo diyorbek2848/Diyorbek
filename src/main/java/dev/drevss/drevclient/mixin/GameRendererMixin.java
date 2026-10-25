@@ -13,13 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public abstract class GameRendererMixin {
-    @ModifyReturnValue(method = "getFov(Lnet/minecraft/client/Camera;FZ)F", at = @At("RETURN"))
+    @ModifyReturnValue(method = "getFov(Lnet/minecraft/client/Camera;FZ)F", at = @At("RETURN"), require = 0)
     private float drev$zoom(float original) {
         if (DrevClient.get() == null) return original;
         return DrevClient.get().modules().get(Zoom.class).apply(original);
     }
 
-    @Inject(method = "bobHurt(Lcom/mojang/blaze3d/vertex/PoseStack;F)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "bobHurt(Lcom/mojang/blaze3d/vertex/PoseStack;F)V", at = @At("HEAD"), cancellable = true, require = 0)
     private void drev$noHurtCam(PoseStack matrices, float pt, CallbackInfo ci) {
         if (DrevClient.get() == null) return;
         NoRender nr = DrevClient.get().modules().get(NoRender.class);

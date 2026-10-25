@@ -8,7 +8,7 @@ import dev.drevss.drevclient.util.ChatUtil;
 
 public class AiCommand extends Command {
     public AiCommand() {
-        super("ai", "ai <question> | ai key <key> | ai model <model> | ai open | ai reset",
+        super("ai", "ai <question|key <key>|model <name>|open|reset>",
             "Ask DrevAI anything about the client or the game (it can search the web)", "drevai", "ask");
     }
 

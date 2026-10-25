@@ -61,9 +61,10 @@ public class DrevClientTest implements FabricClientGameTest {
             sp.getClientWorld().waitForChunksRender();
             context.takeScreenshot("01_in_game_hud");
 
+            testRenderShowcase(context, sp);
+            testFunctional(context, server);
             testModules(context);
             testCommands(context);
-            testRenderShowcase(context, sp);
             testScreens(context);
         }
 
@@ -104,10 +105,12 @@ public class DrevClientTest implements FabricClientGameTest {
             if (SKIP.contains(name)) continue;
             int before = ModuleManager.ERRORS.size();
             try {
+                boolean wasOn = context.computeOnClient(mc -> DrevClient.get().modules().get(name).isEnabled());
                 context.runOnClient(mc -> DrevClient.get().modules().get(name).setEnabled(true));
                 context.waitTicks(25);
                 context.runOnClient(mc -> DrevClient.get().modules().get(name).setEnabled(false));
                 context.waitTicks(2);
+                if (wasOn) context.runOnClient(mc -> DrevClient.get().modules().get(name).setEnabled(true));
             } catch (Throwable t) {
                 ModuleManager.ERRORS.add(name + " (enable/disable): " + t);
             }
@@ -149,6 +152,9 @@ public class DrevClientTest implements FabricClientGameTest {
             for (HudElement e : DrevClient.get().hud().elements()) e.setVisible(true);
             for (String s : showcase) DrevClient.get().modules().get(s).setEnabled(true);
             DrevClient.get().modules().get("ESP").getSetting("Mode").parse("Box");
+            DrevClient.get().modules().get("ESP").getSetting("Animals").parse("on");
+            DrevClient.get().modules().get("Tracers").getSetting("Animals").parse("on");
+            DrevClient.get().modules().get("Nametags").getSetting("Mobs").parse("on");
         });
         context.waitTicks(40);
         sp.getClientWorld().waitForChunksRender();
@@ -166,6 +172,64 @@ public class DrevClientTest implements FabricClientGameTest {
             for (String s : showcase) DrevClient.get().modules().get(s).setEnabled(false);
         });
         context.waitTicks(5);
+    }
+
+    private void check(boolean ok, String what) {
+        report.add("Functional " + what + ": " + (ok ? "OK" : "FAILED"));
+        if (!ok) ModuleManager.ERRORS.add("functional check failed: " + what);
+        LOG.info("Functional {} {}", what, ok ? "OK" : "FAILED");
+    }
+
+    private void testFunctional(ClientGameTestContext context, TestServerContext server) {
+        // XRay and BlockESP find the blocks placed by setupScene
+        context.runOnClient(mc -> {
+            DrevClient.get().modules().get("XRay").setEnabled(true);
+            DrevClient.get().modules().get("BlockESP").setEnabled(true);
+        });
+        context.waitTicks(60);
+        int ores = context.computeOnClient(mc -> Integer.parseInt(DrevClient.get().modules().get("XRay").getInfo()));
+        int blocks = context.computeOnClient(mc -> Integer.parseInt(DrevClient.get().modules().get("BlockESP").getInfo()));
+        check(ores >= 3, "XRay finds ores (" + ores + ")");
+        check(blocks >= 1, "BlockESP finds the spawner (" + blocks + ")");
+        context.runOnClient(mc -> {
+            DrevClient.get().modules().get("XRay").setEnabled(false);
+            DrevClient.get().modules().get("BlockESP").setEnabled(false);
+        });
+
+        // AutoTotem moves a totem into the offhand
+        run(server, "clear @p");
+        run(server, "give @p minecraft:totem_of_undying 2");
+        context.waitTicks(5);
+        context.runOnClient(mc -> DrevClient.get().modules().get("AutoTotem").setEnabled(true));
+        context.waitTicks(20);
+        boolean totem = context.computeOnClient(mc -> mc.player.getOffhandItem().is(net.minecraft.world.item.Items.TOTEM_OF_UNDYING));
+        check(totem, "AutoTotem equips a totem");
+        context.runOnClient(mc -> DrevClient.get().modules().get("AutoTotem").setEnabled(false));
+
+        // KillAura damages a zombie next to the player
+        run(server, "tp @p 0.5 -60 0.5 0 0");
+        run(server, "summon minecraft:zombie 0.5 -60 2.5 {NoAI:1b,PersistenceRequired:1b,Silent:1b,Health:20f}");
+        run(server, "item replace entity @p weapon.mainhand with minecraft:diamond_sword");
+        context.waitTicks(10);
+        float before = context.computeOnClient(mc -> nearestZombieHealth(mc));
+        context.runOnClient(mc -> DrevClient.get().modules().get("KillAura").setEnabled(true));
+        context.waitTicks(60);
+        context.runOnClient(mc -> DrevClient.get().modules().get("KillAura").setEnabled(false));
+        context.waitTicks(5);
+        float after = context.computeOnClient(mc -> nearestZombieHealth(mc));
+        check(before > 0 && after < before, "KillAura attacks (health " + before + " -> " + after + ")");
+    }
+
+    private static float nearestZombieHealth(net.minecraft.client.Minecraft mc) {
+        float best = -1;
+        double bestDist = 9;
+        for (net.minecraft.world.entity.Entity e : mc.level.entitiesForRendering()) {
+            if (e instanceof net.minecraft.world.entity.monster.Zombie z && z.distanceToSqr(mc.player) < bestDist) {
+                bestDist = z.distanceToSqr(mc.player);
+                best = z.isAlive() ? z.getHealth() : 0;
+            }
+        }
+        return best < 0 ? 0 : best;
     }
 
     private void testScreens(ClientGameTestContext context) {

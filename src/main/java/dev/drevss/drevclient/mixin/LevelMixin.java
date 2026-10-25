@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Level.class)
 public abstract class LevelMixin {
-    @Inject(method = "getRainLevel(F)F", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getRainLevel(F)F", at = @At("HEAD"), cancellable = true, require = 0)
     private void drev$rain(float delta, CallbackInfoReturnable<Float> cir) {
         if ((Object) this != Minecraft.getInstance().level || DrevClient.get() == null) return;
         NoRender nr = DrevClient.get().modules().get(NoRender.class);

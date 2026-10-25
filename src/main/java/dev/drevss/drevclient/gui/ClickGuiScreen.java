@@ -38,6 +38,7 @@ public class ClickGuiScreen extends Screen {
         int x, y;
         boolean open = true;
         int scroll;
+        int maxBody; // 0 = use the space down to the bottom of the screen
 
         Panel(Category c, int x, int y) { category = c; this.x = x; this.y = y; }
     }
@@ -49,6 +50,8 @@ public class ClickGuiScreen extends Screen {
             x += PANEL_W + 6;
         }
     }
+
+    private static boolean customLayout;
 
     private Panel dragging;
     private int dragOffX, dragOffY;
@@ -71,6 +74,39 @@ public class ClickGuiScreen extends Screen {
 
     @Override
     public boolean isPauseScreen() { return false; }
+
+    @Override
+    protected void init() {
+        boolean offScreen = false;
+        for (Panel p : PANELS) {
+            if (p.x < 0 || p.x + PANEL_W > width || p.y < 0 || p.y + HEADER_H > height - 20) offScreen = true;
+        }
+        if (!customLayout || offScreen) autoLayout();
+    }
+
+    /** Fits all panels on screen: wraps into rows and limits each panel's height (scroll for the rest). */
+    private void autoLayout() {
+        int cols = Math.max(1, Math.min(PANELS.size(), (width - 6) / (PANEL_W + 6)));
+        int rows = (PANELS.size() + cols - 1) / cols;
+        int rowH = (height - 46) / rows;
+        int totalW = cols * (PANEL_W + 6) - 6;
+        int startX = Math.max(4, (width - totalW) / 2);
+        List<Panel> ordered = new ArrayList<>(PANELS);
+        ordered.sort((a, b) -> a.category.ordinal() - b.category.ordinal());
+        for (int i = 0; i < ordered.size(); i++) {
+            Panel p = ordered.get(i);
+            p.x = startX + (i % cols) * (PANEL_W + 6);
+            p.y = 20 + (i / cols) * rowH;
+            p.maxBody = rows > 1 ? Math.max(ROW_H * 2, rowH - HEADER_H - 6) : 0;
+            p.scroll = 0;
+        }
+        customLayout = false;
+    }
+
+    private int maxBodyHeight(Panel p) {
+        int toBottom = height - p.y - HEADER_H - 24;
+        return p.maxBody > 0 ? Math.min(p.maxBody, toBottom) : toBottom;
+    }
 
     @Override
     public void renderBackground(GuiGraphics g, int mouseX, int mouseY, float pt) {
@@ -160,7 +196,7 @@ public class ClickGuiScreen extends Screen {
             contentH += ROW_H;
             if (EXPANDED.contains(m.getName())) contentH += visibleSettings(m).size() * SET_H + SET_H;
         }
-        int maxH = height - p.y - HEADER_H - 24;
+        int maxH = maxBodyHeight(p);
         p.scroll = Math.max(0, Math.min(p.scroll, Math.max(0, contentH - maxH)));
         int visibleH = Math.min(contentH, maxH);
         int top = p.y + HEADER_H;
@@ -276,6 +312,8 @@ public class ClickGuiScreen extends Screen {
         if (inside(mx, my, p.x, p.y, PANEL_W, HEADER_H)) {
             if (button == 0) {
                 dragging = p;
+                customLayout = true;
+                p.maxBody = 0;
                 dragOffX = (int) mx - p.x;
                 dragOffY = (int) my - p.y;
             } else if (button == 1) {
@@ -286,7 +324,7 @@ public class ClickGuiScreen extends Screen {
         if (!p.open) return false;
 
         int top = p.y + HEADER_H;
-        int maxH = height - p.y - HEADER_H - 24;
+        int maxH = maxBodyHeight(p);
         if (my < top || my > top + maxH || mx < p.x || mx > p.x + PANEL_W) return false;
 
         int y = top - p.scroll;
@@ -452,6 +490,7 @@ public class ClickGuiScreen extends Screen {
             po.addProperty("x", p.x);
             po.addProperty("y", p.y);
             po.addProperty("open", p.open);
+            po.addProperty("maxBody", p.maxBody);
             o.add(p.category.name(), po);
         }
         return o;
@@ -464,6 +503,8 @@ public class ClickGuiScreen extends Screen {
             p.x = po.get("x").getAsInt();
             p.y = po.get("y").getAsInt();
             p.open = po.get("open").getAsBoolean();
+            if (po.has("maxBody")) p.maxBody = po.get("maxBody").getAsInt();
+            customLayout = true;
         }
     }
 }

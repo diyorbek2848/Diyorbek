@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public class GuiMixin {
     @Inject(method = "renderTextureOverlay(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/resources/Identifier;F)V",
-        at = @At("HEAD"), cancellable = true)
+        at = @At("HEAD"), cancellable = true, require = 0)
     private void drev$overlay(GuiGraphics graphics, Identifier texture, float opacity, CallbackInfo ci) {
         if (texture == null || DrevClient.get() == null) return;
         NoRender nr = DrevClient.get().modules().get(NoRender.class);

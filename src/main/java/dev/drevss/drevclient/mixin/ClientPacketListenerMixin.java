@@ -16,7 +16,8 @@ public abstract class ClientPacketListenerMixin {
     @ModifyExpressionValue(
         method = "handleExplosion(Lnet/minecraft/network/protocol/game/ClientboundExplodePacket;)V",
         at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/network/protocol/game/ClientboundExplodePacket;playerKnockback()Ljava/util/Optional;"))
+            target = "Lnet/minecraft/network/protocol/game/ClientboundExplodePacket;playerKnockback()Ljava/util/Optional;"),
+        require = 0)
     private Optional<Vec3> drev$explosionKnockback(Optional<Vec3> original) {
         if (DrevClient.get() == null) return original;
         Velocity velocity = DrevClient.get().modules().get(Velocity.class);

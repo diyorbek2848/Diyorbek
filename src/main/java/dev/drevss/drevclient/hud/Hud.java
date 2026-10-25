@@ -31,11 +31,11 @@ public class Hud {
     public Hud() {
         elements.add(new Watermark());
         elements.add(new ModuleList());
-        elements.add(new TextLine("Coords", 2, 400, true, this::coords));
+        elements.add(new TextLine("Coords", 2, -1, true, this::coords));
         elements.add(new TextLine("FPS", 2, 14, true, () -> "FPS §f" + mc().getFps()));
         elements.add(new TextLine("Ping", 2, 24, true, this::ping));
         elements.add(new TextLine("Speed", 2, 34, true, this::speed));
-        elements.add(new TextLine("Direction", 2, 390, true, this::direction));
+        elements.add(new TextLine("Direction", 2, -11, true, this::direction));
         elements.add(new TextLine("Time", 2, 44, false, () -> "Time §f" + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
         elements.add(new TextLine("Server", 2, 54, false, this::server));
         elements.add(new TextLine("Durability", 2, 64, false, this::durability));
@@ -175,7 +175,7 @@ public class Hud {
     }
 
     static class ModuleList extends HudElement {
-        ModuleList() { super("ModuleList", 10000, 2, true); }
+        ModuleList() { super("ModuleList", -1, 2, true); }
 
         @Override
         public void render(GuiGraphics g, float pt, boolean editing) {
@@ -213,7 +213,7 @@ public class Hud {
     static class Armor extends HudElement {
         private static final EquipmentSlot[] SLOTS = { EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET };
 
-        Armor() { super("Armor", 10000, 10000, true); }
+        Armor() { super("Armor", HudElement.CENTER, -50, true); }
 
         @Override
         public void render(GuiGraphics g, float pt, boolean editing) {
@@ -244,7 +244,7 @@ public class Hud {
     static class Compass extends HudElement {
         private static final String[] MARKS = { "S", "SW", "W", "NW", "N", "NE", "E", "SE" };
 
-        Compass() { super("Compass", 10000, 2, false); }
+        Compass() { super("Compass", HudElement.CENTER, 2, false); }
 
         @Override
         public void render(GuiGraphics g, float pt, boolean editing) {
@@ -270,7 +270,7 @@ public class Hud {
     }
 
     static class Potions extends HudElement {
-        Potions() { super("Potions", 10000, 300, true); }
+        Potions() { super("Potions", -1, -1, true); }
 
         @Override
         public void render(GuiGraphics g, float pt, boolean editing) {

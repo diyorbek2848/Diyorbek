@@ -29,7 +29,7 @@ public class Freecam extends Module {
     @Override
     public void onEnable() {
         if (!inGame()) { setEnabledSilently(false); return; }
-        camPos = mc.player.getEyePosition();
+        camPos = mc.player.getEyePosition().add(0, 0.9, 0); // start just above the head, not inside it
         prevCamPos = camPos;
         yaw = mc.player.getYRot();
         pitch = mc.player.getXRot();

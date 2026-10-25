@@ -18,6 +18,14 @@ dependencies {
 
 loom {
 	accessWidenerPath = file("src/main/resources/drevclient.accesswidener")
+
+	runs {
+		clientGameTest {
+			// Optional hooks use require = 0 so other mods can't crash the game,
+			// but the test treats any hook that didn't apply as a failure.
+			jvmArguments.add("-Dmixin.debug.countInjections=true")
+		}
+	}
 }
 
 processResources {
