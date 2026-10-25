@@ -56,7 +56,10 @@ public class Hud {
 
     public void render(GuiGraphics g, float pt) {
         HudModule hud = DrevClient.get().modules().get(HudModule.class);
-        if (!hud.isEnabled() || mc().screen instanceof dev.drevss.drevclient.gui.HudEditorScreen) return;
+        var screen = mc().screen;
+        if (!hud.isEnabled() || screen instanceof dev.drevss.drevclient.gui.HudEditorScreen
+            || screen instanceof dev.drevss.drevclient.gui.ClickGuiScreen
+            || screen instanceof dev.drevss.drevclient.gui.DrevAIScreen) return;
         for (HudElement e : elements) if (e.isVisible()) e.render(g, pt, false);
     }
 

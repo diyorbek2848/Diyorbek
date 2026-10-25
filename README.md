@@ -15,7 +15,7 @@ Made for your own server and singleplayer. Using combat/movement modules on othe
 
 ## Build the jar
 
-You need **JDK 21** (Temurin/Adoptium is fine).
+You need **JDK 25** to run the build (Fabric Loom requires it; the mod itself runs on Java 21+). Temurin/Adoptium is fine.
 
 **On your PC (Windows):**
 ```
@@ -26,7 +26,7 @@ The jar appears in `build/libs/`. The first build downloads Minecraft and Fabric
 
 **On GitHub (no setup):** push this folder to a GitHub repo, open the **Actions** tab, and download the `DrevClient` artifact when the build finishes. The workflow is in `.github/workflows/build.yml`.
 
-If the build fails, copy the first error from the log and send it to me: it will be a small name fix.
+Every push also runs an automated in-game test on GitHub: it launches Minecraft 1.21.11, turns every module on and off, opens every screen, runs every command, and fails the build if anything throws.
 
 ---
 
