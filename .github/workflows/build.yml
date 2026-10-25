@@ -3,6 +3,9 @@
 name: build
 on: [push, workflow_dispatch]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -13,8 +16,28 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - run: chmod +x ./gradlew
-      - run: ./gradlew build --stacktrace
+      - name: build
+        run: |
+          set -o pipefail
+          ./gradlew build --stacktrace 2>&1 | tee build.log
       - uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: DrevClient
           path: build/libs/*.jar
+      # Publishes the build log and the jar to the "build-output" branch so they
+      # can be read without opening the Actions website.
+      - name: publish build output
+        if: always()
+        run: |
+          mkdir -p /tmp/out
+          cp build.log /tmp/out/ 2>/dev/null || true
+          cp build/libs/*.jar /tmp/out/ 2>/dev/null || true
+          echo "${{ github.sha }} ${{ job.status }}" > /tmp/out/STATUS
+          cd /tmp/out
+          git init -q -b build-output
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -qm "build output for ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" build-output
