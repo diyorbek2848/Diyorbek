@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "drevclient",
+  "version": "${version}",
+  "name": "DrevClient",
+  "description": "DrevClient - utility client by DrevSS. Right Shift opens the ClickGUI.",
+  "authors": ["DrevSS"],
+  "license": "All-Rights-Reserved",
+  "icon": "assets/drevclient/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.drevss.drevclient.DrevClient"]
+  },
+  "mixins": ["drevclient.mixins.json"],
+  "accessWidener": "drevclient.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "fabric-api": ">=0.140.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21"
+  }
+}

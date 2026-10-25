@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.drevss.drevclient.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "BlockStateBaseMixin",
+    "CameraMixin",
+    "ChatComponentMixin",
+    "ClientPacketListenerMixin",
+    "ConnectionMixin",
+    "DeltaTrackerTimerMixin",
+    "EntityMixin",
+    "FogRendererMixin",
+    "GameRendererMixin",
+    "GuiMixin",
+    "KeyboardHandlerMixin",
+    "LevelMixin",
+    "LevelRendererMixin",
+    "LocalPlayerMixin",
+    "MinecraftMixin",
+    "MouseHandlerMixin",
+    "MultiPlayerGameModeMixin",
+    "PlayerMixin",
+    "ScreenEffectRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
