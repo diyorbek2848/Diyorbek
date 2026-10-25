@@ -33,6 +33,8 @@ loom {
 			// Optional hooks use require = 0 so other mods can't crash the game,
 			// but the test treats any hook that didn't apply as a failure.
 			jvmArguments.add("-Dmixin.debug.countInjections=true")
+			// avoids a known world-loading stall in headless CI
+			jvmArguments.add("-Dfabric.client.gametest.disableNetworkSynchronizer=true")
 		}
 	}
 }
