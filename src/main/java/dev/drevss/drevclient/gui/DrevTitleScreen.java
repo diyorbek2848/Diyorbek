@@ -160,11 +160,15 @@ public class DrevTitleScreen extends Screen {
         }
 
         // right side panels
-        int pw = 132;
-        int px = width - pw - 8;
-        int py = Math.max(8, height / 2 - 70);
-        drawProfile(g, px, py, pw);
-        drawNews(g, px, py + 62, pw);
+        // panels shrink on small windows and hide if they would cover the buttons
+        int free = width - (cx + bw / 2) - 16;
+        int pw = Math.min(140, free);
+        if (pw >= 104) {
+            int px = width - pw - 8;
+            int py = Math.max(8, height / 2 - 70);
+            drawProfile(g, px, py, pw);
+            if (py + 62 + 90 < height - 20) drawNews(g, px, py + 62, pw);
+        }
 
         // status bar
         String name = minecraft.getUser().getName();

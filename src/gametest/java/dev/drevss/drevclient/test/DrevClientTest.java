@@ -70,6 +70,12 @@ public class DrevClientTest implements FabricClientGameTest {
             testScreens(context);
         }
 
+        // Fabric's test runner must end on the vanilla title screen
+        context.runOnClient(mc -> {
+            DrevClient.get().modules().clientSettings().customMenu.set(false);
+            mc.setScreen(new net.minecraft.client.gui.screens.TitleScreen());
+        });
+        context.waitTicks(5);
         writeReport();
         if (!ModuleManager.ERRORS.isEmpty()) {
             throw new AssertionError("DrevClient errors:\n" + String.join("\n", ModuleManager.ERRORS));
