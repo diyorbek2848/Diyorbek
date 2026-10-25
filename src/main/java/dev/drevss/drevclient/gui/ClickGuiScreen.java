@@ -52,6 +52,7 @@ public class ClickGuiScreen extends Screen {
     }
 
     private static boolean customLayout;
+    private final long openedAt = System.currentTimeMillis();
 
     private Panel dragging;
     private int dragOffX, dragOffY;
@@ -428,7 +429,7 @@ public class ClickGuiScreen extends Screen {
             return true;
         }
 
-        if (key == cfg().getKey() && key != -1) {
+        if (key == cfg().getKey() && key != -1 && System.currentTimeMillis() - openedAt > 250) {
             onClose();
             return true;
         }

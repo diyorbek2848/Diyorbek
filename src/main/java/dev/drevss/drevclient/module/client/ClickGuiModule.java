@@ -22,7 +22,8 @@ public class ClickGuiModule extends Module {
 
     @Override
     public void onEnable() {
-        if (mc.player != null) mc.setScreen(new ClickGuiScreen());
+        // open on the next frame so the key press that opened it doesn't also reach the new screen
+        if (mc.player != null) mc.execute(() -> mc.setScreen(new ClickGuiScreen()));
         setEnabledSilently(false);
     }
 

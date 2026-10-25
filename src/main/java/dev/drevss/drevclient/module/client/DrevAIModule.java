@@ -23,7 +23,8 @@ public class DrevAIModule extends Module {
 
     @Override
     public void onEnable() {
-        if (mc.player != null) mc.setScreen(new DrevAIScreen());
+        // open on the next frame so the key press that opened it doesn't also reach the new screen
+        if (mc.player != null) mc.execute(() -> mc.setScreen(new DrevAIScreen()));
         setEnabledSilently(false);
     }
 
