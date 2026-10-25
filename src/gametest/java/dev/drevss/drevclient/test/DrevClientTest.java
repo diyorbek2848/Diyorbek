@@ -67,6 +67,7 @@ public class DrevClientTest implements FabricClientGameTest {
             testFunctional(context, server);
             testModules(context);
             testCommands(context);
+            testKeys(context);
             testScreens(context);
         }
 
@@ -243,6 +244,34 @@ public class DrevClientTest implements FabricClientGameTest {
             }
         }
         return best < 0 ? 0 : best;
+    }
+
+    private void testKeys(ClientGameTestContext context) {
+        context.runOnClient(mc -> mc.setScreen(null));
+        context.waitTicks(5);
+        context.getInput().pressKey(org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT);
+        context.waitTicks(5);
+        String screen = context.computeOnClient(mc -> mc.screen == null ? "none" : mc.screen.getClass().getSimpleName());
+        check(screen.equals("ClickGuiScreen"), "Right Shift opens ClickGUI (screen=" + screen + ")");
+        context.runOnClient(mc -> mc.setScreen(null));
+        context.waitTicks(5);
+
+        context.getInput().pressKey(org.lwjgl.glfw.GLFW.GLFW_KEY_J);
+        context.waitTicks(5);
+        screen = context.computeOnClient(mc -> mc.screen == null ? "none" : mc.screen.getClass().getSimpleName());
+        check(screen.equals("DrevAIScreen"), "J opens DrevAI (screen=" + screen + ")");
+        context.runOnClient(mc -> mc.setScreen(null));
+        context.waitTicks(5);
+
+        context.runOnClient(mc -> DrevClient.get().commands().execute("bind Sprint R"));
+        context.getInput().pressKey(org.lwjgl.glfw.GLFW.GLFW_KEY_R);
+        context.waitTicks(3);
+        boolean on = context.computeOnClient(mc -> DrevClient.get().modules().get("Sprint").isEnabled());
+        check(on, "Key bind toggles a module");
+        context.runOnClient(mc -> {
+            DrevClient.get().modules().get("Sprint").setEnabled(false);
+            DrevClient.get().commands().execute("bind Sprint none");
+        });
     }
 
     private void testScreens(ClientGameTestContext context) {
