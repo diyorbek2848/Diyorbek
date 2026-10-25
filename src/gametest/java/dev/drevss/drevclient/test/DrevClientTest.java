@@ -224,7 +224,7 @@ public class DrevClientTest implements FabricClientGameTest {
         float best = -1;
         double bestDist = 9;
         for (net.minecraft.world.entity.Entity e : mc.level.entitiesForRendering()) {
-            if (e instanceof net.minecraft.world.entity.monster.Zombie z && z.distanceToSqr(mc.player) < bestDist) {
+            if (e instanceof net.minecraft.world.entity.monster.zombie.Zombie z && z.distanceToSqr(mc.player) < bestDist) {
                 bestDist = z.distanceToSqr(mc.player);
                 best = z.isAlive() ? z.getHealth() : 0;
             }
