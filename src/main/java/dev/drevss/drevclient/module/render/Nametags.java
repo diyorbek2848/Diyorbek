@@ -29,7 +29,7 @@ public class Nametags extends Module {
     private final BoolSetting items = add(new BoolSetting("Items", "Show held items and armor", true));
     private final BoolSetting durability = add(new BoolSetting("Durability", "Show armor durability %", true));
     private final BoolSetting mobs = add(new BoolSetting("Mobs", "Tags for mobs too", false));
-    private final NumberSetting range = add(new NumberSetting("Range", "Max distance", 128, 16, 512, 16));
+    private final NumberSetting range = add(new NumberSetting("Range", "Max distance", 1000, 16, 1000, 8));
 
     private static final EquipmentSlot[] ARMOR = { EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET };
 

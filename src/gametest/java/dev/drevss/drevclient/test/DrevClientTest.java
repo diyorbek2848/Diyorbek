@@ -14,7 +14,6 @@ import net.fabricmc.fabric.api.client.gametest.v1.context.TestServerContext;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
 import net.fabricmc.fabric.api.client.gametest.v1.world.TestWorldBuilder;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState;
 import net.minecraft.commands.CommandSourceStack;
 import org.slf4j.Logger;
@@ -40,8 +39,11 @@ public class DrevClientTest implements FabricClientGameTest {
     @Override
     public void runTest(ClientGameTestContext context) {
         context.runOnClient(mc -> mc.options.hideSplashTexts().set(true));
-        context.waitFor(mc -> mc.screen instanceof TitleScreen t && !t.fading);
-        LOG.info("Title screen reached");
+        context.waitFor(mc -> mc.screen instanceof dev.drevss.drevclient.gui.DrevTitleScreen);
+        context.waitTicks(20);
+        context.takeScreenshot("00_main_menu");
+        report.add("DrevClient main menu: OK");
+        LOG.info("Main menu reached");
 
         TestWorldBuilder builder = context.worldBuilder();
         builder.adjustSettings(c -> {
@@ -191,6 +193,11 @@ public class DrevClientTest implements FabricClientGameTest {
         int blocks = context.computeOnClient(mc -> Integer.parseInt(DrevClient.get().modules().get("BlockESP").getInfo()));
         check(ores >= 3, "XRay finds ores (" + ores + ")");
         check(blocks >= 1, "BlockESP finds the spawner (" + blocks + ")");
+        context.runOnClient(mc -> DrevClient.get().modules().get("StorageESP").setEnabled(true));
+        context.waitTicks(25);
+        int storage = context.computeOnClient(mc -> Integer.parseInt(DrevClient.get().modules().get("StorageESP").getInfo()));
+        check(storage >= 4, "StorageESP finds the containers (" + storage + ")");
+        context.runOnClient(mc -> DrevClient.get().modules().get("StorageESP").setEnabled(false));
         context.runOnClient(mc -> {
             DrevClient.get().modules().get("XRay").setEnabled(false);
             DrevClient.get().modules().get("BlockESP").setEnabled(false);

@@ -22,7 +22,7 @@ public class Tracers extends Module {
     private final BoolSetting animals = add(new BoolSetting("Animals", "Lines to animals", false));
     private final ModeSetting target = add(new ModeSetting("Target", "Where the line ends", "Body", "Body", "Head", "Feet"));
     private final ModeSetting colorMode = add(new ModeSetting("Color", "ESP color or distance-based", "Distance", "Distance", "ESP"));
-    private final NumberSetting range = add(new NumberSetting("Range", "Max distance", 256, 16, 512, 16));
+    private final NumberSetting range = add(new NumberSetting("Range", "Max distance", 1000, 16, 1000, 8));
 
     public Tracers() {
         super("Tracers", "Draws lines to entities", Category.RENDER);

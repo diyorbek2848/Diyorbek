@@ -21,7 +21,7 @@ public class ESP extends Module {
     private final ModeSetting mode = add(new ModeSetting("Mode", "Box draws 3D boxes, Glow uses the vanilla outline", "Box", "Box", "Glow", "Both"));
     private final BoolSetting fill = add(new BoolSetting("Fill", "Fill the boxes", true));
     private final NumberSetting fillAlpha = add(new NumberSetting("FillAlpha", "Box fill opacity", 40, 0, 255, 5));
-    private final NumberSetting range = add(new NumberSetting("Range", "Max distance", 128, 16, 512, 16));
+    private final NumberSetting range = add(new NumberSetting("Range", "Max distance", 1000, 16, 1000, 8));
     private final BoolSetting players = add(new BoolSetting("Players", "Show players", true));
     private final BoolSetting mobs = add(new BoolSetting("Mobs", "Show hostile mobs", true));
     private final BoolSetting animals = add(new BoolSetting("Animals", "Show animals", false));
