@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "drevclient_test",
+  "version": "1.0.0",
+  "name": "DrevClient Test",
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-client-gametest": ["dev.drevss.drevclient.test.DrevClientTest"]
+  }
+}

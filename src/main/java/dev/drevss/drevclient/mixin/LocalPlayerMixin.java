@@ -23,30 +23,26 @@ public abstract class LocalPlayerMixin {
     }
 
     @WrapOperation(method = "aiStep()V",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isSlowDueToUsingItem()Z", ordinal = 0),
-        require = 0)
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isSlowDueToUsingItem()Z", ordinal = 0))
     private boolean drev$aiStepItemUse(LocalPlayer instance, Operation<Boolean> original) {
         return !drev$noSlowItems() && original.call(instance);
     }
 
     @WrapOperation(method = "modifyInput(Lnet/minecraft/world/phys/Vec2;)Lnet/minecraft/world/phys/Vec2;",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isUsingItem()Z", ordinal = 0),
-        require = 0)
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isUsingItem()Z", ordinal = 0))
     private boolean drev$modifyInputItemUse(LocalPlayer instance, Operation<Boolean> original) {
         return !drev$noSlowItems() && original.call(instance);
     }
 
     @WrapOperation(method = "canStartSprinting()Z",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isSlowDueToUsingItem()Z", ordinal = 0),
-        require = 0)
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isSlowDueToUsingItem()Z", ordinal = 0))
     private boolean drev$sprintItemUse(LocalPlayer instance, Operation<Boolean> original) {
         return !drev$noSlowItems() && original.call(instance);
     }
 
     /** Freecam: read WASD for the camera, then feed the player an empty input. */
     @WrapOperation(method = "aiStep()V",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/ClientInput;tick()V"),
-        require = 0)
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/ClientInput;tick()V"))
     private void drev$inputTick(ClientInput input, Operation<Void> original) {
         original.call(input);
         if (DrevClient.get() == null) return;
@@ -57,7 +53,7 @@ public abstract class LocalPlayerMixin {
         input.moveVector = Vec2.ZERO;
     }
 
-    @Inject(method = "isShiftKeyDown()Z", at = @At("HEAD"), cancellable = true, require = 0)
+    @Inject(method = "isShiftKeyDown()Z", at = @At("HEAD"), cancellable = true)
     private void drev$shift(CallbackInfoReturnable<Boolean> cir) {
         if (DrevClient.get() != null && DrevClient.get().modules().get(Freecam.class).isEnabled()) cir.setReturnValue(false);
     }

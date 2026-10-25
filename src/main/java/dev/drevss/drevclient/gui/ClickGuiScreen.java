@@ -442,6 +442,9 @@ public class ClickGuiScreen extends Screen {
     // persistence
     // ------------------------------------------------------------------
 
+    /** Opens a module's settings in the GUI (used by the automated test). */
+    public static void expand(String moduleName) { EXPANDED.add(moduleName); }
+
     public static JsonObject savePanels() {
         JsonObject o = new JsonObject();
         for (Panel p : PANELS) {

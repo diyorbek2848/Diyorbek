@@ -20,6 +20,13 @@ jobs:
         run: |
           set -o pipefail
           ./gradlew build --stacktrace 2>&1 | tee build.log
+      # Launches the real game, turns every module on/off, opens every screen
+      # and runs every command. Fails if anything throws.
+      - name: in-game test
+        timeout-minutes: 15
+        run: |
+          set -o pipefail
+          ./gradlew runClientGameTest --stacktrace 2>&1 | tee test.log
       - uses: actions/upload-artifact@v4
         if: success()
         with:
@@ -31,7 +38,11 @@ jobs:
         if: always()
         run: |
           mkdir -p /tmp/out
-          cp build.log /tmp/out/ 2>/dev/null || true
+          cp build.log test.log /tmp/out/ 2>/dev/null || true
+          find build/run -name 'drevclient-test-report.txt' -exec cp {} /tmp/out/ \; 2>/dev/null || true
+          mkdir -p /tmp/out/screenshots
+          find build/run -path '*screenshots*' -name '*.png' -exec cp {} /tmp/out/screenshots/ \; 2>/dev/null || true
+          find build/run -name 'latest.log' -exec cp {} /tmp/out/game-latest.log \; 2>/dev/null || true
           cp build/libs/*.jar /tmp/out/ 2>/dev/null || true
           echo "${{ github.sha }} ${{ job.status }}" > /tmp/out/STATUS
           cd /tmp/out

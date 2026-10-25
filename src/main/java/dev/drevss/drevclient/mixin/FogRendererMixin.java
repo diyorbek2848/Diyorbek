@@ -20,8 +20,7 @@ public class FogRendererMixin {
     @Inject(
         method = "setupFog(Lnet/minecraft/client/Camera;ILnet/minecraft/client/DeltaTracker;FLnet/minecraft/client/multiplayer/ClientLevel;)Lorg/joml/Vector4f;",
         at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/fog/FogData;renderDistanceEnd:F",
-            opcode = Opcodes.PUTFIELD, shift = At.Shift.AFTER),
-        require = 0)
+            opcode = Opcodes.PUTFIELD, shift = At.Shift.AFTER))
     private void drev$noFog(Camera camera, int renderDistance, DeltaTracker deltaTracker, float darken, ClientLevel level,
                             CallbackInfoReturnable<Vector4f> cir, @Local FogData fog) {
         if (DrevClient.get() == null) return;

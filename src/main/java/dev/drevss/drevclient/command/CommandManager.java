@@ -78,6 +78,7 @@ public class CommandManager {
         } catch (Exception e) {
             ChatUtil.error("Command failed: " + e);
             DrevClient.LOGGER.error("Command " + parts[0] + " failed", e);
+            dev.drevss.drevclient.module.ModuleManager.ERRORS.add("command " + trimmed + ": " + e);
         }
     }
 }

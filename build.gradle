@@ -37,3 +37,12 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_21
 	targetCompatibility = JavaVersion.VERSION_21
 }
+
+// Automated in-game test (./gradlew runClientGameTest), used by the GitHub workflow.
+fabricApi.configureTests {
+	createSourceSet = true
+	enableGameTests = false
+	enableClientGameTests = true
+	modId = "drevclient_test"
+	username = "DrevSS"
+}

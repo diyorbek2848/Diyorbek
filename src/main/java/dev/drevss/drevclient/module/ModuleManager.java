@@ -26,6 +26,9 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModuleManager {
+    /** Errors caught from modules and commands (read by the automated in-game test). */
+    public static final List<String> ERRORS = java.util.Collections.synchronizedList(new ArrayList<>());
+
     private final List<Module> modules = new ArrayList<>();
     private final java.util.Map<Class<?>, Module> byClass = new java.util.HashMap<>();
 
@@ -136,6 +139,7 @@ public class ModuleManager {
                 action.accept(m);
             } catch (Throwable t) {
                 DrevClient.LOGGER.error("Module " + m.getName() + " crashed", t);
+                ERRORS.add(m.getName() + ": " + t);
                 m.setEnabledSilently(false);
                 ChatUtil.error(m.getName() + " hit an error and was turned off: " + t);
             }
