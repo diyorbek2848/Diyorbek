@@ -232,7 +232,7 @@ public class DrevTitleScreen extends Screen {
     private void drawNews(GuiGraphics g, int x, int y, int w) {
         String[] news = {
             "§bDREV CLIENT v" + DrevClient.VERSION + "\n§fNOW LIVE!",
-            "§fDrevAI is here! §7Press J",
+            "§fDrevAI: §7press J",
             "§fRight Shift = ClickGUI",
         };
         int h = 12 + news.length * 6;
