@@ -1,0 +1,363 @@
+===== net/minecraft/world/entity/player/PlayerSkin.java
+package net.minecraft.world.entity.player;
+
+
+public record PlayerSkin(
+	ClientAsset.Texture body, ClientAsset.@Nullable Texture cape, ClientAsset.@Nullable Texture elytra, PlayerModelType model, boolean secure
+) {
+	public static PlayerSkin insecure(
+		ClientAsset.Texture texture, ClientAsset.@Nullable Texture texture2, ClientAsset.@Nullable Texture texture3, PlayerModelType playerModelType
+	) {
+		return new PlayerSkin(texture, texture2, texture3, playerModelType, false);
+	}
+
+	public PlayerSkin with(PlayerSkin.Patch patch) {
+		return patch.equals(PlayerSkin.Patch.EMPTY)
+			? this
+			: insecure(
+				DataFixUtils.orElse(patch.body, this.body),
+				DataFixUtils.orElse(patch.cape, this.cape),
+				DataFixUtils.orElse(patch.elytra, this.elytra),
+				patch.model.orElse(this.model)
+			);
+	}
+
+	public record Patch(
+		Optional<ClientAsset.ResourceTexture> body,
+		Optional<ClientAsset.ResourceTexture> cape,
+		Optional<ClientAsset.ResourceTexture> elytra,
+		Optional<PlayerModelType> model
+	) {
+		public static final PlayerSkin.Patch EMPTY = new PlayerSkin.Patch(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+		public static final MapCodec<PlayerSkin.Patch> MAP_CODEC = RecordCodecBuilder.mapCodec(
+			instance -> instance.group(
+					ClientAsset.ResourceTexture.CODEC.optionalFieldOf("texture").forGetter(PlayerSkin.Patch::body),
+					ClientAsset.ResourceTexture.CODEC.optionalFieldOf("cape").forGetter(PlayerSkin.Patch::cape),
+					ClientAsset.ResourceTexture.CODEC.optionalFieldOf("elytra").forGetter(PlayerSkin.Patch::elytra),
+					PlayerModelType.CODEC.optionalFieldOf("model").forGetter(PlayerSkin.Patch::model)
+				)
+				.apply(instance, PlayerSkin.Patch::create)
+		);
+		public static final StreamCodec<ByteBuf, PlayerSkin.Patch> STREAM_CODEC = StreamCodec.composite(
+			ClientAsset.ResourceTexture.STREAM_CODEC.apply(ByteBufCodecs::optional),
+			PlayerSkin.Patch::body,
+			ClientAsset.ResourceTexture.STREAM_CODEC.apply(ByteBufCodecs::optional),
+			PlayerSkin.Patch::cape,
+			ClientAsset.ResourceTexture.STREAM_CODEC.apply(ByteBufCodecs::optional),
+			PlayerSkin.Patch::elytra,
+			PlayerModelType.STREAM_CODEC.apply(ByteBufCodecs::optional),
+			PlayerSkin.Patch::model,
+			PlayerSkin.Patch::create
+		);
+
+		public static PlayerSkin.Patch create(
+			Optional<ClientAsset.ResourceTexture> optional,
+			Optional<ClientAsset.ResourceTexture> optional2,
+			Optional<ClientAsset.ResourceTexture> optional3,
+			Optional<PlayerModelType> optional4
+		) {
+			return optional.isEmpty() && optional2.isEmpty() && optional3.isEmpty() && optional4.isEmpty()
+				? EMPTY
+				: new PlayerSkin.Patch(optional, optional2, optional3, optional4);
+		}
+	}
+}
+===== net/minecraft/core/ClientAsset.java
+package net.minecraft.core;
+
+
+public interface ClientAsset {
+	Identifier id();
+
+	record DownloadedTexture(Identifier texturePath, String url) implements ClientAsset.Texture {
+		@Override
+		public Identifier id() {
+			return this.texturePath;
+		}
+	}
+
+	record ResourceTexture(Identifier id, Identifier texturePath) implements ClientAsset.Texture {
+		public static final Codec<ClientAsset.ResourceTexture> CODEC = Identifier.CODEC.xmap(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
+		public static final MapCodec<ClientAsset.ResourceTexture> DEFAULT_FIELD_CODEC = CODEC.fieldOf("asset_id");
+		public static final StreamCodec<ByteBuf, ClientAsset.ResourceTexture> STREAM_CODEC = Identifier.STREAM_CODEC
+			.map(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
+
+		public ResourceTexture(Identifier identifier) {
+			this(identifier, identifier.withPath(string -> "textures/" + string + ".png"));
+		}
+	}
+
+	interface Texture extends ClientAsset {
+		Identifier texturePath();
+	}
+}
+===== net/minecraft/world/entity/player/PlayerModelType.java
+package net.minecraft.world.entity.player;
+
+
+public enum PlayerModelType implements StringRepresentable {
+	SLIM("slim", "slim"),
+	WIDE("wide", "default");
+
+	public static final Codec<PlayerModelType> CODEC = StringRepresentable.fromEnum(PlayerModelType::values);
+	private static final Function<String, PlayerModelType> NAME_LOOKUP = StringRepresentable.createNameLookup(
+		values(), playerModelType -> playerModelType.legacyServicesId
+	);
+	public static final StreamCodec<ByteBuf, PlayerModelType> STREAM_CODEC = ByteBufCodecs.BOOL
+		.map(boolean_ -> boolean_ ? SLIM : WIDE, playerModelType -> playerModelType == SLIM);
+	private final String id;
+	private final String legacyServicesId;
+
+	PlayerModelType(final String string2, final String string3) {
+		this.id = string2;
+		this.legacyServicesId = string3;
+	}
+
+	public static PlayerModelType byLegacyServicesName(@Nullable String string) {
+		return Objects.requireNonNullElse(NAME_LOOKUP.apply(string), WIDE);
+	}
+
+	@Override
+	public String getSerializedName() {
+		return this.id;
+	}
+}
+===== net/minecraft/client/gui/components/PlayerSkinWidget.java
+package net.minecraft.client.gui.components;
+
+
+@Environment(EnvType.CLIENT)
+public class PlayerSkinWidget extends AbstractWidget {
+	private static final float MODEL_HEIGHT = 2.125F;
+	private static final float FIT_SCALE = 0.97F;
+	private static final float ROTATION_SENSITIVITY = 2.5F;
+	private static final float DEFAULT_ROTATION_X = -5.0F;
+	private static final float DEFAULT_ROTATION_Y = 30.0F;
+	private static final float ROTATION_X_LIMIT = 50.0F;
+	private final PlayerModel wideModel;
+	private final PlayerModel slimModel;
+	private final Supplier<PlayerSkin> skin;
+	private float rotationX = -5.0F;
+	private float rotationY = 30.0F;
+
+	public PlayerSkinWidget(int i, int j, EntityModelSet entityModelSet, Supplier<PlayerSkin> supplier) {
+		super(0, 0, i, j, CommonComponents.EMPTY);
+		this.wideModel = new PlayerModel(entityModelSet.bakeLayer(ModelLayers.PLAYER), false);
+		this.slimModel = new PlayerModel(entityModelSet.bakeLayer(ModelLayers.PLAYER_SLIM), true);
+		this.skin = supplier;
+	}
+
+	@Override
+	protected void renderWidget(GuiGraphics guiGraphics, int i, int j, float f) {
+		float g = 0.97F * this.getHeight() / 2.125F;
+		float h = -1.0625F;
+		PlayerSkin playerSkin = this.skin.get();
+		PlayerModel playerModel = playerSkin.model() == PlayerModelType.SLIM ? this.slimModel : this.wideModel;
+		guiGraphics.submitSkinRenderState(
+			playerModel, playerSkin.body().texturePath(), g, this.rotationX, this.rotationY, -1.0625F, this.getX(), this.getY(), this.getRight(), this.getBottom()
+		);
+	}
+
+	@Override
+	protected void onDrag(MouseButtonEvent mouseButtonEvent, double d, double e) {
+		this.rotationX = Mth.clamp(this.rotationX - (float)e * 2.5F, -50.0F, 50.0F);
+		this.rotationY += (float)d * 2.5F;
+	}
+
+	@Override
+	public void playDownSound(SoundManager soundManager) {
+	}
+
+	@Override
+	protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
+	}
+
+	@Override
+	public @Nullable ComponentPath nextFocusPath(FocusNavigationEvent focusNavigationEvent) {
+		return null;
+	}
+}
+===== net/minecraft/client/gui/font/providers/TrueTypeGlyphProviderDefinition.java
+
+@Environment(EnvType.CLIENT)
+public record TrueTypeGlyphProviderDefinition(Identifier location, float size, float oversample, TrueTypeGlyphProviderDefinition.Shift shift, String skip)
+	implements GlyphProviderDefinition {
+	private static final Codec<String> SKIP_LIST_CODEC = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), list -> String.join("", list));
+	public static final MapCodec<TrueTypeGlyphProviderDefinition> CODEC = RecordCodecBuilder.mapCodec(
+		instance -> instance.group(
+				Identifier.CODEC.fieldOf("file").forGetter(TrueTypeGlyphProviderDefinition::location),
+				Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(TrueTypeGlyphProviderDefinition::size),
+				Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(TrueTypeGlyphProviderDefinition::oversample),
+				TrueTypeGlyphProviderDefinition.Shift.CODEC
+					.optionalFieldOf("shift", TrueTypeGlyphProviderDefinition.Shift.NONE)
+					.forGetter(TrueTypeGlyphProviderDefinition::shift),
+				SKIP_LIST_CODEC.optionalFieldOf("skip", "").forGetter(TrueTypeGlyphProviderDefinition::skip)
+			)
+			.apply(instance, TrueTypeGlyphProviderDefinition::new)
+	);
+
+	@Override
+	public GlyphProviderType type() {
+		return GlyphProviderType.TTF;
+	}
+
+	@Override
+	public Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack() {
+		return Either.left(this::load);
+	}
+
+	private GlyphProvider load(ResourceManager resourceManager) throws IOException {
+		FT_Face fT_Face = null;
+		ByteBuffer byteBuffer = null;
+
+		try (InputStream inputStream = resourceManager.open(this.location.withPrefix("font/"))) {
+			byteBuffer = TextureUtil.readResource(inputStream);
+			synchronized (FreeTypeUtil.LIBRARY_LOCK) {
+				try (MemoryStack memoryStack = MemoryStack.stackPush()) {
+					PointerBuffer pointerBuffer = memoryStack.mallocPointer(1);
+===== net/minecraft/client/renderer/texture/DynamicTexture.java
+package net.minecraft.client.renderer.texture;
+
+
+@Environment(EnvType.CLIENT)
+public class DynamicTexture extends AbstractTexture implements Dumpable {
+	private static final Logger LOGGER = LogUtils.getLogger();
+	private @Nullable NativeImage pixels;
+
+	public DynamicTexture(Supplier<String> supplier, NativeImage nativeImage) {
+		this.pixels = nativeImage;
+		this.createTexture(supplier);
+		this.upload();
+	}
+
+	public DynamicTexture(String string, int i, int j, boolean bl) {
+		this.pixels = new NativeImage(i, j, bl);
+		this.createTexture(string);
+	}
+
+	public DynamicTexture(Supplier<String> supplier, int i, int j, boolean bl) {
+		this.pixels = new NativeImage(i, j, bl);
+		this.createTexture(supplier);
+	}
+
+	private void createTexture(Supplier<String> supplier) {
+		GpuDevice gpuDevice = RenderSystem.getDevice();
+		this.texture = gpuDevice.createTexture(supplier, 5, TextureFormat.RGBA8, this.pixels.getWidth(), this.pixels.getHeight(), 1, 1);
+		this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
+		this.textureView = gpuDevice.createTextureView(this.texture);
+	}
+
+	private void createTexture(String string) {
+		GpuDevice gpuDevice = RenderSystem.getDevice();
+		this.texture = gpuDevice.createTexture(string, 5, TextureFormat.RGBA8, this.pixels.getWidth(), this.pixels.getHeight(), 1, 1);
+		this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
+		this.textureView = gpuDevice.createTextureView(this.texture);
+	}
+
+	public void upload() {
+		if (this.pixels != null && this.texture != null) {
+			RenderSystem.getDevice().createCommandEncoder().writeToTexture(this.texture, this.pixels);
+		} else {
+			LOGGER.warn("Trying to upload disposed texture {}", this.getTexture().getLabel());
+		}
+	}
+
+===== net/minecraft/client/gui/screens/inventory/InventoryScreen.java
+		int l = this.topPos;
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, INVENTORY_LOCATION, k, l, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+		renderEntityInInventoryFollowsMouse(guiGraphics, k + 26, l + 8, k + 75, l + 78, 30, 0.0625F, this.xMouse, this.yMouse, this.minecraft.player);
+	}
+
+	public static void renderEntityInInventoryFollowsMouse(
+		GuiGraphics guiGraphics, int i, int j, int k, int l, int m, float f, float g, float h, LivingEntity livingEntity
+	) {
+		float n = (i + k) / 2.0F;
+		float o = (j + l) / 2.0F;
+		float p = (float)Math.atan((n - g) / 40.0F);
+		float q = (float)Math.atan((o - h) / 40.0F);
+		Quaternionf quaternionf = new Quaternionf().rotateZ((float) Math.PI);
+		Quaternionf quaternionf2 = new Quaternionf().rotateX(q * 20.0F * (float) (Math.PI / 180.0));
+		quaternionf.mul(quaternionf2);
+		EntityRenderState entityRenderState = extractRenderState(livingEntity);
+		if (entityRenderState instanceof LivingEntityRenderState livingEntityRenderState) {
+			livingEntityRenderState.bodyRot = 180.0F + p * 20.0F;
+			livingEntityRenderState.yRot = p * 20.0F;
+			if (livingEntityRenderState.pose != Pose.FALL_FLYING) {
+				livingEntityRenderState.xRot = -q * 20.0F;
+			} else {
+				livingEntityRenderState.xRot = 0.0F;
+			}
+
+			livingEntityRenderState.boundingBoxWidth = livingEntityRenderState.boundingBoxWidth / livingEntityRenderState.scale;
+			livingEntityRenderState.boundingBoxHeight = livingEntityRenderState.boundingBoxHeight / livingEntityRenderState.scale;
+			livingEntityRenderState.scale = 1.0F;
+		}
+
+		Vector3f vector3f = new Vector3f(0.0F, entityRenderState.boundingBoxHeight / 2.0F + f, 0.0F);
+		guiGraphics.submitEntityRenderState(entityRenderState, m, vector3f, quaternionf, quaternionf2, i, j, k, l);
+	}
+
+	private static EntityRenderState extractRenderState(LivingEntity livingEntity) {
+		EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+		EntityRenderer<? super LivingEntity, ?> entityRenderer = entityRenderDispatcher.getRenderer(livingEntity);
+		EntityRenderState entityRenderState = entityRenderer.createRenderState(livingEntity, 1.0F);
+		entityRenderState.lightCoords = 15728880;
+		entityRenderState.shadowPieces.clear();
+		entityRenderState.outlineColor = 0;
+		return entityRenderState;
+	}
+
+	@Override
+	public boolean mouseReleased(MouseButtonEvent mouseButtonEvent) {
+===== net/minecraft/client/player/AbstractClientPlayer.java
+		}
+	}
+
+	@Override
+	public PlayerSkin getSkin() {
+		PlayerInfo playerInfo = this.getPlayerInfo();
+		return playerInfo == null ? DefaultPlayerSkin.get(this.getUUID()) : playerInfo.getSkin();
+	}
+
+	@Override
+	public Parrot.@Nullable Variant getParrotVariantOnShoulder(boolean bl) {
+		return (bl ? this.getShoulderParrotLeft() : this.getShoulderParrotRight()).orElse(null);
+	}
+===== net/minecraft/client/multiplayer/PlayerInfo.java
+
+	public PlayerInfo(GameProfile gameProfile, boolean bl) {
+		this.profile = gameProfile;
+		this.messageValidator = fallbackMessageValidator(bl);
+	}
+
+	private static Supplier<PlayerSkin> createSkinLookup(GameProfile gameProfile) {
+		Minecraft minecraft = Minecraft.getInstance();
+		boolean bl = !minecraft.isLocalPlayer(gameProfile.id());
+		return minecraft.getSkinManager().createLookup(gameProfile, bl);
+	}
+
+	public GameProfile getProfile() {
+===== net/minecraft/client/multiplayer/PlayerInfo.java
+	}
+
+	public PlayerSkin getSkin() {
+		if (this.skinLookup == null) {
+			this.skinLookup = createSkinLookup(this.profile);
+		}
+
+		return this.skinLookup.get();
+	}
+
+	public @Nullable PlayerTeam getTeam() {
+===== grep
+net/minecraft/client/gui/components/PlayerSkinWidget.java:35:	public PlayerSkinWidget(int i, int j, EntityModelSet entityModelSet, Supplier<PlayerSkin> supplier) {
+net/minecraft/client/gui/screens/reporting/SkinReportScreen.java:45:		linearLayout.addChild(new PlayerSkinWidget(85, 120, this.minecraft.getEntityModels(), this.reportBuilder.report().getSkinGetter()));
+19:public class SystemToast implements Toast {
+119:	public static void addOrUpdate(ToastManager toastManager, SystemToast.SystemToastId systemToastId, Component component, @Nullable Component component2) {
+161:		addOrUpdate(
+170:		addOrUpdate(
+179:		addOrUpdate(
+42:	public static SystemToast multiline(Minecraft minecraft, SystemToast.SystemToastId systemToastId, Component component, Component component2) {
+115:	public static void add(ToastManager toastManager, SystemToast.SystemToastId systemToastId, Component component, @Nullable Component component2) {
+119:	public static void addOrUpdate(ToastManager toastManager, SystemToast.SystemToastId systemToastId, Component component, @Nullable Component component2) {
+2758:	public EntityModelSet getEntityModels() {
