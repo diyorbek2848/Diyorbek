@@ -26,7 +26,7 @@ The jar appears in `build/libs/`. The first build downloads Minecraft and Fabric
 
 **On GitHub (no setup):** push this folder to a GitHub repo, open the **Actions** tab, and download the `DrevClient` artifact when the build finishes. The workflow is in `.github/workflows/build.yml`.
 
-Every push also runs an automated in-game test on GitHub: it launches Minecraft 1.21.11, turns every module on and off, opens every screen, runs every command, and fails the build if anything throws.
+Every push also runs an automated in-game test on GitHub: it launches Minecraft 1.21.11, starts a real dedicated server, and checks the modules there (fall damage with NoFall, no fly kick with Flight, KillAura/CrystalAura/Criticals damage on the server, Step, Spider, Jesus, Velocity, Surround, Freecam, ElytraFly and more), opens every menu page, clicks the GUI with the mouse, and fails the build if anything breaks.
 
 ---
 
@@ -34,14 +34,27 @@ Every push also runs an automated in-game test on GitHub: it launches Minecraft 
 
 | Key | Action |
 |---|---|
-| Right Shift | ClickGUI |
+| Right Shift | DrevClient menu |
 | J | DrevAI chat window |
 | C (hold) | Zoom |
 | Middle click a player | Add/remove friend |
 
-**ClickGUI:** left click toggles a module, right click opens its settings, middle click binds a key. Drag panel headers to move them, right click a header to collapse it, scroll inside a panel, just start typing to search. Right click a number setting to reset it; right click a color to toggle rainbow. Bottom-right buttons open the **HUD Editor** and **DrevAI**.
+**The menu** has a sidebar with the module categories and the General pages:
 
-**HUD Editor:** drag elements anywhere, right click to hide/show.
+- **Module cards:** the switch turns a module on/off; click the card (or the arrow) to open its settings; middle click a card to bind a key. Sliders drag, right click a slider resets it. List and grid views at the top right, plus All / Enabled / Disabled filters.
+- **Search:** just start typing (or Ctrl+F) to search every module.
+- **Settings:** prefix, toggle messages, DrevAI key and model, quick actions.
+- **Theme:** accent colour presets, menu opacity and blur, HUD colours.
+- **Configs:** save setups under a name, load or delete them.
+- **Socials:** friends list, plus everyone on the current server with an Add button.
+- **Keybinds:** every module's key in one list (click to set, right click to clear, Hold mode) and macros.
+- **Skins:** see below.
+
+## Skins (works with cracked accounts)
+
+Open **Skins** in the menu and either press **Choose PNG file**, drag a skin `.png` onto the Minecraft window, or type any premium player's name and press **Get skin**. Pick Classic or Slim arms. Skins are kept in `.minecraft/config/drevclient/skins/` and the last one is re-applied when you start the game.
+
+On a cracked account the skin is shown on your side (first person, F5, tab list). Other players see it only if the server runs **SkinsRestorer**: after getting a skin by player name, press **Set on server** (it runs `/skin set <name>`).
 
 ---
 

@@ -1188,15 +1188,15 @@ public class ClickGuiScreen extends Screen {
         }
         yy += libH + 12;
 
-        card(rx, yy, rw, 120);
+        card(rx, yy, rw, 126);
         cardTitle("Who sees your skin?", null, rx + 22, yy + 14);
         List<String> info = Ui.wrap("On a cracked account only you see a custom skin. Other players see it if your server runs the "
             + "SkinsRestorer plugin: get a premium player's skin above, then press the button.", F.SANS, 12, rw - 44, 3);
-        for (int i = 0; i < info.size(); i++) Ui.text(info.get(i), F.SANS, 12, rx + 22, yy + 40 + i * 16, TEXT2);
+        for (int i = 0; i < info.size(); i++) Ui.text(info.get(i), F.SANS, 12, rx + 22, yy + 46 + i * 16, TEXT2);
         String src = skins.sourcePlayer();
         boolean canServer = minecraft.player != null && src != null;
         button(canServer ? "Set on server: /skin set " + src : "Set on server (needs a skin fetched by name, in game)", null,
-            rx + 22, yy + 80, rw - 44, 30, false, () -> {
+            rx + 22, yy + 86, rw - 44, 30, false, () -> {
                 if (canServer) {
                     minecraft.player.connection.sendCommand("skin set " + src);
                     toast("Sent /skin set " + src);
