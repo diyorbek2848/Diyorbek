@@ -1,0 +1,14 @@
+class OS\b|enum OS
+void openPath|void openFile|void openUri
+"type": *"ttf"|TrueTypeGlyphProviderDefinition
+record TrueTypeGlyphProviderDefinition
+getAccessToken|getXuid|User.Type|enum Type
+renderEntityInInventoryFollowsMouse\(
+public void lerpMotion|void lerpMotion
+this.options.keyUse.isDown\(\) && this.rightClickDelay
+STEP_HEIGHT =
+ServerboundPlayerCommandPacket.Action.START_FALL_FLYING|START_FALL_FLYING
+public boolean isUsingItem\(\)
+public boolean charTyped
+mouseDragged\(
+public static final .*GUI_TEXTURED

@@ -1,0 +1,35 @@
+# Developer helper: decompiles Minecraft and prints method signatures of the
+# classes listed in probe/classes.txt to the "probe-output" branch.
+name: probe
+on:
+  push:
+    branches: [drevclient-probe]
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+      - run: chmod +x ./gradlew
+      - run: ./gradlew genSources --stacktrace > gen.log 2>&1 || (tail -50 gen.log; exit 1)
+      - name: extract
+        run: |
+          JAR=$(find .gradle ~/.gradle -name 'minecraft-*-sources.jar' | grep -v fabric | head -1)
+          echo "sources: $JAR"
+          mkdir -p /tmp/src && cd /tmp/src && unzip -q -o "$GITHUB_WORKSPACE/$JAR" 2>/dev/null || unzip -q -o "$JAR"
+      - name: probe
+        run: bash probe/probe.sh /tmp/src > /tmp/probe.txt 2>&1 || true
+      - name: publish
+        run: |
+          mkdir -p /tmp/out && cp /tmp/probe.txt /tmp/out/
+          cd /tmp/out && git init -q -b probe-output
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add -A && git commit -qm probe
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" probe-output
