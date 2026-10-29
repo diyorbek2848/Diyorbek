@@ -542,7 +542,11 @@ public class ClickGuiScreen extends Screen {
     // controls
     // ------------------------------------------------------------------
 
+    /** Window-pixel centers of module switches from the last frame (used by the automated test). */
+    public static final Map<String, int[]> SWITCH_POS = new HashMap<>();
+
     private void toggleSwitch(String key, float x, float y, float w, float h, boolean on, Runnable onToggle) {
+        if (key.startsWith("mod:")) SWITCH_POS.put(key.substring(4), new int[] { Ui.p(x + w / 2), Ui.p(y + h / 2) });
         float t = Ui.anim("sw:" + key, on ? 1 : 0, 16);
         Ui.round(x, y, w, h, h / 2, Ui.mix(TRACK_OFF, accent(), t));
         float r = h / 2 - 3;

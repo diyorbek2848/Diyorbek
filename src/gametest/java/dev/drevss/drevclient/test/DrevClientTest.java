@@ -307,9 +307,45 @@ public class DrevClientTest implements FabricClientGameTest {
         context.getInput().typeChars("aura");
         context.waitTicks(10);
         context.takeScreenshot("gui_search");
-        // click the first module's switch through the real mouse path
-        context.runOnClient(mc -> mc.setScreen(null));
-        context.waitTicks(3);
+        // full HD, like a normal monitor
+        context.getInput().resizeWindow(1920, 1080);
+        context.waitTicks(10);
+        for (String[] s : new String[][] { { "CATEGORY", "COMBAT", "list" }, { "CATEGORY", "RENDER", "grid" }, { "SKINS", null, null }, { "THEME", null, null } }) {
+            context.runOnClient(mc -> {
+                if (s[1] != null) ClickGuiScreen.showCategory(dev.drevss.drevclient.module.Category.valueOf(s[1]));
+                else ClickGuiScreen.showPage(s[0]);
+                ClickGuiScreen.setGrid("grid".equals(s[2]));
+                mc.setScreen(new ClickGuiScreen());
+            });
+            context.waitTicks(12);
+            context.takeScreenshot("hd_gui_" + s[0].toLowerCase() + (s[1] != null ? "_" + s[1].toLowerCase() : ""));
+        }
+
+        // click a module's switch with the real mouse
+        context.runOnClient(mc -> {
+            ClickGuiScreen.showCategory(dev.drevss.drevclient.module.Category.MOVEMENT);
+            ClickGuiScreen.setGrid(false);
+            mc.setScreen(new ClickGuiScreen());
+        });
+        context.waitTicks(10);
+        int[] pos = context.computeOnClient(mc -> ClickGuiScreen.SWITCH_POS.get("Sprint"));
+        boolean before = context.computeOnClient(mc -> DrevClient.get().modules().get("Sprint").isEnabled());
+        if (pos != null) {
+            double scale = context.computeOnClient(mc -> (double) mc.getWindow().getScreenWidth() / mc.getWindow().getWidth());
+            context.getInput().setCursorPos(pos[0] * scale, pos[1] * scale);
+            context.waitTick();
+            context.getInput().pressMouse(0);
+            context.waitTicks(5);
+        }
+        boolean after = context.computeOnClient(mc -> DrevClient.get().modules().get("Sprint").isEnabled());
+        check(pos != null && after != before, "Clicking a switch in the GUI toggles the module");
+        context.takeScreenshot("hd_gui_after_click");
+        context.runOnClient(mc -> {
+            DrevClient.get().modules().get("Sprint").setEnabled(false);
+            mc.setScreen(null);
+        });
+        context.getInput().resizeWindow(854, 480);
+        context.waitTicks(5);
         report.add("GUI pages rendered: OK");
     }
 
