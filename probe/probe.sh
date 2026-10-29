@@ -1,21 +1,19 @@
 #!/bin/bash
-# Usage: probe.sh <decompiled source dir>
-# Prints declarations (not bodies) of each class in classes.txt,
-# plus any extra grep patterns in greps.txt (one match line each, max 5).
 SRC="$1"
-DIR="$(dirname "$0")"
-while read -r cls; do
-  [ -z "$cls" ] && continue
-  f="$SRC/$(echo "$cls" | tr . /).java"
-  echo "===== $cls"
-  if [ ! -f "$f" ]; then echo "MISSING"; continue; fi
-  grep -nE '^\s*(public|protected|private|static|final|abstract|record|enum|interface|class|@Nullable)[^=;]*(\(|\{|;)\s*$|^\s*(public|protected|private)?\s*(static )?(final )?[A-Za-z<>\[\]., ?]+ [a-zA-Z_]+\(.*\)\s*(throws [A-Za-z., ]+)?\s*\{?\s*$|^(public |final |abstract )*(class|record|interface|enum) ' "$f" | grep -vE '^\s*[0-9]+:\s*(return|if|for|while|switch|else|try|catch|throw|new |this\.|super\.)' | head -120
-done < "$DIR/classes.txt"
-echo "===== GREPS"
-while read -r pat; do
-  [ -z "$pat" ] && continue
-  echo "--- $pat"
-  grep -rnE "$pat" "$SRC/net/minecraft" "$SRC/com/mojang" 2>/dev/null | sed "s|$SRC/||" | head -6
-done < "$DIR/greps.txt"
-echo "===== FONTS"
-find "$SRC" -path '*font*' -name '*.json' | head -20
+show() { f="$SRC/$1"; echo "===== $1"; if [ -f "$f" ]; then sed -n "${2:-1},${3:-400}p" "$f" | grep -v '^import'; else echo MISSING; fi; }
+show net/minecraft/world/entity/player/PlayerSkin.java 1 80
+show net/minecraft/core/ClientAsset.java
+show net/minecraft/world/entity/player/PlayerModelType.java 1 40
+show net/minecraft/client/gui/components/PlayerSkinWidget.java 1 120
+show net/minecraft/client/gui/font/providers/TrueTypeGlyphProviderDefinition.java 20 60
+show net/minecraft/client/renderer/texture/DynamicTexture.java 1 60
+show net/minecraft/client/gui/screens/inventory/InventoryScreen.java 95 140
+show net/minecraft/client/player/AbstractClientPlayer.java 78 90
+show net/minecraft/client/multiplayer/PlayerInfo.java 28 40
+show net/minecraft/client/multiplayer/PlayerInfo.java 84 94
+echo "===== grep"
+grep -rn "PlayerSkinWidget(" "$SRC/net/minecraft" | sed "s|$SRC/||" | head -5
+grep -rn "class .*Toast\b\|SystemToast.add\|addOrUpdate(" "$SRC/net/minecraft/client/gui/components/toasts/SystemToast.java" | head -5
+grep -n "public static void onceOrIgnore\|public static void add\|public static .* multiline\|public static void addOrUpdate" "$SRC/net/minecraft/client/gui/components/toasts/SystemToast.java" | head
+grep -n "Ingredient\|public .*getEntityModels\|EntityModelSet getEntityModels" "$SRC/net/minecraft/client/Minecraft.java" | head -3
+grep -rn "tinyfd_openFileDialog" "$SRC/net/minecraft" | sed "s|$SRC/||" | head -3
