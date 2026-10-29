@@ -203,12 +203,13 @@ public class ServerTests {
 
     private void step() {
         reset(0.5, 0.5, -90);
-        cmd("fill 3 " + Y + " -3 3 " + Y + " 3 minecraft:stone");
+        cmd("fill 3 " + Y + " -3 20 " + Y + " 3 minecraft:stone");
         module("Step", true);
         ctx.getInput().holdKeyFor(o -> o.keyUp, 25);
         ctx.waitTicks(10);
         Vec3 c = clientPos(), s = serverPos();
         check(c.y >= Y + 0.99 && s.y >= Y + 0.99 && s.x > 3, "Step: walked up a full block (server " + fmt(s) + ")");
+        cmd("fill 3 " + Y + " -3 20 " + Y + " 3 minecraft:air");
     }
 
     private void spider() {
@@ -384,6 +385,8 @@ public class ServerTests {
         Vec3 b = clientPos(), s = serverPos();
         check(flying && b.x - a.x > 10 && b.distanceTo(s) < 2, "ElytraFly: flew " + String.format("%.1f", b.x - a.x) + " blocks (gliding " + flying + ")");
         module("ElytraFly", false);
-        ctx.waitFor(mc -> mc.player.onGround(), 200);
+        cmd("item replace entity " + P + " armor.chest with minecraft:air");
+        cmd("tp " + P + " 0.5 " + Y + " 0.5");
+        ctx.waitTicks(10);
     }
 }

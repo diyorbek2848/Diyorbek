@@ -178,10 +178,10 @@ public class ClickGuiScreen extends Screen {
         Ui.text("BETA RELEASE " + DrevClient.VERSION, F.SANS, 10, x + 52, y + 46, TEXT3);
 
         // the list scales down a little on short windows
-        int generalCount = 8;
-        int catCount = Category.values().length - 1;
-        float avail = h - 66 - 60 - 52;
-        float itemH = Math.max(26, Math.min(36, avail / (catCount + generalCount)));
+        int items = (Category.values().length - 1) + 8;
+        boolean showProfile = h > 540;
+        float fixed = 78 + 14 + 14 + 14 + (showProfile ? 60 : 8);
+        float itemH = Math.max(18, Math.min(36, (h - fixed) / items - 2));
 
         float iy = y + 78;
         Ui.text("MODULES", F.SEMI, 11, x + 18, iy, TEXT3);
@@ -214,6 +214,7 @@ public class ClickGuiScreen extends Screen {
         sidebarItem(x + 8, iy, w - 16, itemH, "ai", "DrevAI", "", false, () -> minecraft.setScreen(new DrevAIScreen()));
 
         // profile at the bottom
+        if (!showProfile) return;
         float by = y + h - 52;
         Ui.rect(x + 14, by, w - 28, 1, BORDER);
         face(minecraft.getUser().getName(), x + 18, by + 12, 28);
@@ -242,7 +243,7 @@ public class ClickGuiScreen extends Screen {
         }
         int fg = selected ? 0xFFFFFFFF : Ui.mix(0xFFAEB3C8, 0xFFFFFFFF, t);
         Ui.icon(icon, x + 12, y + h / 2 - 8, 16, selected ? Ui.mix(accent(), 0xFFFFFFFF, 0.25f) : fg);
-        Ui.text(label, selected ? F.SEMI : F.SANS, 14, x + 38, y + h / 2, fg);
+        Ui.text(label, selected ? F.SEMI : F.SANS, h < 26 ? 13 : 14, x + 38, y + h / 2, fg);
         if (!count.isEmpty()) Ui.textRight(count, F.SANS, 11, x + w - 12, y + h / 2, TEXT3);
         Ui.onClick(x, y, w, h, b -> action.run());
     }
@@ -277,10 +278,21 @@ public class ClickGuiScreen extends Screen {
         }
     }
 
+    private float headerRight;
+
     private void bigHeader(float x, float y, String accentWord, String rest, String subtitle) {
         Ui.textBase(accentWord, F.SERIF, 30, x, y + 26, accent());
-        Ui.textBase(rest, F.BOLD, 26, x + Ui.width(accentWord, F.SERIF, 30) + 8, y + 26, TEXT);
-        Ui.text(subtitle, F.SANS, 13, x, y + 47, TEXT2);
+        float rx = x + Ui.width(accentWord, F.SERIF, 30) + 8;
+        Ui.textBase(rest, F.BOLD, 26, rx, y + 26, TEXT);
+        headerRight = rx + Ui.width(rest, F.BOLD, 26);
+        Ui.text(Ui.ellipsize(subtitle, F.SANS, 13, viewW), F.SANS, 13, x, y + 47, TEXT2);
+    }
+
+    /** Search box at the top right, shrunk so it never covers the title. */
+    private void headerSearch(float x, float y, float w) {
+        float sw = Math.min(290, x + w - headerRight - 24);
+        if (sw < 150) sw = 150;
+        searchBox(x + w - sw, y, sw, 40);
     }
 
     /** Begins a scrollable area; returns the y to start drawing at. */
@@ -336,7 +348,7 @@ public class ClickGuiScreen extends Screen {
         } else {
             bigHeader(x, y, "Search", "results", mods.size() + " modules match “" + search + "”");
         }
-        searchBox(x + w - 290, y, 290, 40);
+        headerSearch(x, y, w);
 
         // filter chips + view toggle
         float cy = y + 72;
@@ -437,11 +449,14 @@ public class ClickGuiScreen extends Screen {
         float hv = Ui.anim("card:" + m.getName(), hovHead ? 1 : 0, 14);
         Ui.roundBordered(x, y, w, h, 12, Ui.mix(CARD, CARD_HOVER, hv), m.isEnabled() ? Ui.mix(CARD_BORDER, Ui.withA(accent(), 0x70), 0.6f) : CARD_BORDER);
 
-        Ui.text(m.getName(), F.SEMI, 15, x + 22, y + 25, TEXT);
-        if (binding == m) Ui.text("Press a key…", F.SEMI, 12, x + 30 + Ui.width(m.getName(), F.SEMI, 15), y + 25, accent());
+        String title = m instanceof ClickGuiModule ? "Menu" : m instanceof ClientSettings ? "General" : m.getName();
+        String desc = m instanceof ClickGuiModule ? "How this menu looks  \u00b7  opens with the key on the right"
+            : m instanceof ClientSettings ? "Applies to the whole client" : m.getDescription();
+        Ui.text(title, F.SEMI, 15, x + 22, y + 25, TEXT);
+        if (binding == m) Ui.text("Press a key\u2026", F.SEMI, 12, x + 30 + Ui.width(title, F.SEMI, 15), y + 25, accent());
         else if (m.getKey() >= 0) {
             String k = KeyUtil.name(m.getKey());
-            float kx = x + 32 + Ui.width(m.getName(), F.SEMI, 15);
+            float kx = x + 32 + Ui.width(title, F.SEMI, 15);
             float kw = Ui.width(k, F.SEMI, 10) + 12;
             Ui.roundBordered(kx, y + 16, kw, 18, 5, 0xFF1A1E30, CARD_BORDER);
             Ui.textCenter(k, F.SEMI, 10, kx + kw / 2, y + 25, TEXT2);
@@ -451,7 +466,7 @@ public class ClickGuiScreen extends Screen {
             float tx = x + w - 150 - Ui.width(cat, F.SANS, 11);
             Ui.text(cat, F.SANS, 11, tx, y + 25, TEXT3);
         }
-        Ui.text(Ui.ellipsize(m.getDescription(), F.SANS, 12, w - 190), F.SANS, 12, x + 22, y + 45, TEXT2);
+        Ui.text(Ui.ellipsize(desc, F.SANS, 12, w - 190), F.SANS, 12, x + 22, y + 45, TEXT2);
 
         float sx = x + w - 22 - 40;
         if (showSwitch) {
@@ -749,12 +764,15 @@ public class ClickGuiScreen extends Screen {
     }
 
     private void card(float x, float y, float w, float h) {
+        cardInner = w - 44;
         Ui.roundBordered(x, y, w, h, 12, CARD, CARD_BORDER);
     }
 
+    private float cardInner = 400;
+
     private void cardTitle(String title, String sub, float x, float y) {
-        Ui.text(title, F.SEMI, 15, x, y + 12, TEXT);
-        if (sub != null) Ui.text(sub, F.SANS, 12, x, y + 32, TEXT2);
+        Ui.text(Ui.ellipsize(title, F.SEMI, 15, cardInner), F.SEMI, 15, x, y + 12, TEXT);
+        if (sub != null) Ui.text(Ui.ellipsize(sub, F.SANS, 12, cardInner), F.SANS, 12, x, y + 32, TEXT2);
     }
 
     private void face(String name, float x, float y, float size) {
@@ -855,7 +873,7 @@ public class ClickGuiScreen extends Screen {
 
     private void configsPage(float x, float y, float w, float h) {
         List<Path> files = configFiles();
-        bigHeader(x, y, "Configs", "", files.size() + " saved  ·  " + DrevClient.get().config().getDir());
+        bigHeader(x, y, "Configs", "", files.size() + " saved  ·  .minecraft/config/drevclient");
         float top = y + 66, vh = h - 66;
         float sy = beginScroll(x, top, w, vh), yy = sy;
 
@@ -994,7 +1012,7 @@ public class ClickGuiScreen extends Screen {
 
     private void keybindsPage(float x, float y, float w, float h) {
         bigHeader(x, y, "Keybinds", "", "Click a key to change it  ·  right click clears it  ·  Hold = only on while held");
-        searchBox(x + w - 290, y, 290, 40);
+        headerSearch(x, y, w);
         float top = y + 66, vh = h - 66;
         float sy = beginScroll(x, top, w, vh), yy = sy;
         String q = search.toLowerCase(Locale.ROOT).trim();
@@ -1076,7 +1094,7 @@ public class ClickGuiScreen extends Screen {
         float top = y + 66, vh = h - 66;
 
         // preview column (not scrolled)
-        float pw = 250;
+        float pw = Math.min(250, w * 0.38f);
         card(x, top, pw, vh);
         float prevH = Math.min(300, vh - 150);
         Ui.round(x + 14, top + 14, pw - 28, prevH, 10, 0xFF0C0F1A);
@@ -1105,7 +1123,8 @@ public class ClickGuiScreen extends Screen {
             boolean sel = skins.isSlim() == slimOpt;
             float ox = x + 16 + i * (half + 2);
             if (sel) Ui.round(ox, my + 3, half, 28, 7, Ui.withA(accent(), 0x55));
-            Ui.textCenter(slimOpt ? "Slim (Alex)" : "Classic (Steve)", F.SEMI, 12, ox + half / 2, my + 17, sel ? TEXT : TEXT2);
+            String lbl = half > 100 ? (slimOpt ? "Slim (Alex)" : "Classic (Steve)") : (slimOpt ? "Slim" : "Classic");
+            Ui.textCenter(lbl, F.SEMI, 12, ox + half / 2, my + 17, sel ? TEXT : TEXT2);
             Ui.onClick(ox, my, half, 34, b -> {
                 skins.setSlim(slimOpt);
                 if (skins.selected() != null) skins.apply(skins.selected(), slimOpt);
@@ -1117,22 +1136,27 @@ public class ClickGuiScreen extends Screen {
         float rx = x + pw + 16, rw = w - pw - 16;
         float sy = beginScroll(rx, top, rw, vh), yy = sy;
 
-        card(rx, yy, rw, 186);
+        boolean narrow = rw - 44 - 122 < 170;
+        float addH = narrow ? 232 : 186;
+        card(rx, yy, rw, addH);
         cardTitle("Add a skin", "From a file, by dragging it in, or from any premium player", rx + 22, yy + 14);
-        button(skins.isBusy() ? "Working…" : "Choose PNG file", "upload", rx + 22, yy + 60, rw - 44, 40, true, skins::openFilePicker);
-        float fw = rw - 44 - 122;
+        button(skins.isBusy() ? "Working\u2026" : "Choose PNG file", "upload", rx + 22, yy + 60, rw - 44, 40, true, skins::openFilePicker);
+        float fw = narrow ? rw - 44 : rw - 44 - 122;
         textField("skinname", rx + 22, yy + 112, fw, 36, "", "Player name, e.g. Dream", v -> skins.fetchByName(v), "");
-        button("Get skin", "download", rx + 22 + fw + 10, yy + 112, 112, 36, false, () -> {
+        Runnable getSkin = () -> {
             if ("skinname".equals(focused)) commitFocused();
             else toast("Type a player name first");
-        });
+        };
+        if (narrow) button("Get skin", "download", rx + 22, yy + 156, rw - 44, 36, false, getSkin);
+        else button("Get skin", "download", rx + 22 + fw + 10, yy + 112, 112, 36, false, getSkin);
+        float statusY = yy + addH - 18;
         String status = skins.status();
         if (!status.isEmpty()) {
             boolean bad = status.startsWith("Couldn") || status.contains("isn't") || status.startsWith("No ") || status.contains("must be")
                 || status.contains("error") || status.contains("failed") || status.contains("Enter");
-            Ui.text(Ui.ellipsize(status, F.SANS, 12, rw - 44), F.SANS, 12, rx + 22, yy + 168, bad ? RED : accent());
+            Ui.text(Ui.ellipsize(status, F.SANS, 12, rw - 44), F.SANS, 12, rx + 22, statusY, bad ? RED : accent());
         }
-        yy += 198;
+        yy += addH + 12;
 
         List<String> lib = skins.library();
         float libH = 64 + Math.max(1, (lib.size() + 3) / 4) * 120;
