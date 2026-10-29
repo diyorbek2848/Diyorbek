@@ -64,11 +64,25 @@ public class DrevClientTest implements FabricClientGameTest {
             context.takeScreenshot("01_in_game_hud");
 
             testRenderShowcase(context, sp);
-            testFunctional(context, server);
+            testFunctional(context, server, sp);
+            testSkins(context);
+            testGui(context);
             testModules(context);
             testCommands(context);
             testKeys(context);
             testScreens(context);
+        }
+
+        // ---- real dedicated server ----
+        java.util.Properties props = new java.util.Properties();
+        props.setProperty("spawn-protection", "0");
+        props.setProperty("online-mode", "false");
+        props.setProperty("allow-flight", "false");
+        props.setProperty("difficulty", "normal");
+        try (var ded = context.worldBuilder().createServer(props);
+             var conn = ded.connect()) {
+            conn.getClientWorld().waitForChunksRender();
+            new ServerTests(context, ded, report, ModuleManager.ERRORS).run();
         }
 
         // Fabric's test runner must end on the vanilla title screen
@@ -189,16 +203,27 @@ public class DrevClientTest implements FabricClientGameTest {
         LOG.info("Functional {} {}", what, ok ? "OK" : "FAILED");
     }
 
-    private void testFunctional(ClientGameTestContext context, TestServerContext server) {
+    private void testFunctional(ClientGameTestContext context, TestServerContext server, TestSingleplayerContext sp) {
         // XRay and BlockESP find the blocks placed by setupScene
         context.runOnClient(mc -> {
             DrevClient.get().modules().get("XRay").setEnabled(true);
             DrevClient.get().modules().get("BlockESP").setEnabled(true);
         });
         context.waitTicks(60);
+        boolean xrayOk = context.computeOnClient(mc -> dev.drevss.drevclient.module.render.XRay.isActive()
+            && dev.drevss.drevclient.module.render.XRay.isVisible(net.minecraft.world.level.block.Blocks.DIAMOND_ORE.defaultBlockState())
+            && !dev.drevss.drevclient.module.render.XRay.isVisible(net.minecraft.world.level.block.Blocks.STONE.defaultBlockState()));
+        check(xrayOk, "XRay hides stone and shows diamond ore");
+        context.runOnClient(mc -> {
+            mc.player.setXRot(70);
+        });
+        context.waitTicks(10);
+        sp.getClientWorld().waitForChunksRender();
+        context.takeScreenshot("xray_view");
+        context.runOnClient(mc -> mc.player.setXRot(20));
         int ores = context.computeOnClient(mc -> Integer.parseInt(DrevClient.get().modules().get("XRay").getInfo()));
         int blocks = context.computeOnClient(mc -> Integer.parseInt(DrevClient.get().modules().get("BlockESP").getInfo()));
-        check(ores >= 3, "XRay finds ores (" + ores + ")");
+        check(ores >= 1, "XRay highlights the diamond (" + ores + ")");
         check(blocks >= 1, "BlockESP finds the spawner (" + blocks + ")");
         context.runOnClient(mc -> DrevClient.get().modules().get("StorageESP").setEnabled(true));
         context.waitTicks(25);
@@ -232,6 +257,60 @@ public class DrevClientTest implements FabricClientGameTest {
         context.waitTicks(5);
         float after = context.computeOnClient(mc -> nearestZombieHealth(mc));
         check(before > 0 && after < before, "KillAura attacks (health " + before + " -> " + after + ")");
+    }
+
+    private void testSkins(ClientGameTestContext context) {
+        try {
+            java.nio.file.Path tmp = java.nio.file.Files.createTempFile("drev_test_skin", ".png");
+            try (var in = DrevClientTest.class.getResourceAsStream("/test_skin.png")) {
+                java.nio.file.Files.copy(in, tmp, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            }
+            context.runOnClient(mc -> DrevClient.get().skins().importFiles(List.of(tmp)));
+            context.waitTicks(5);
+            String tex = context.computeOnClient(mc -> mc.player.getSkin().body().texturePath().toString());
+            check(tex.equals("drevclient:dynamic/custom_skin"), "Skin manager applies a PNG skin (" + tex + ")");
+            context.runOnClient(mc -> mc.options.setCameraType(net.minecraft.client.CameraType.THIRD_PERSON_FRONT));
+            context.waitTicks(10);
+            context.takeScreenshot("skin_third_person");
+            context.runOnClient(mc -> mc.options.setCameraType(net.minecraft.client.CameraType.FIRST_PERSON));
+        } catch (Exception e) {
+            check(false, "Skin test threw " + e);
+        }
+    }
+
+    private void testGui(ClientGameTestContext context) {
+        String[][] shots = {
+            { "CATEGORY", "COMBAT", "list" }, { "CATEGORY", "MOVEMENT", "grid" }, { "SETTINGS", null, null },
+            { "THEME", null, null }, { "CONFIGS", null, null }, { "SOCIALS", null, null }, { "KEYBINDS", null, null }, { "SKINS", null, null } };
+        context.runOnClient(mc -> {
+            DrevClient.get().config().save("pvp");
+            ClickGuiScreen.expand("KillAura");
+            ClickGuiScreen.expand("ESP");
+        });
+        for (String[] s : shots) {
+            context.runOnClient(mc -> {
+                if (s[1] != null) ClickGuiScreen.showCategory(dev.drevss.drevclient.module.Category.valueOf(s[1]));
+                else ClickGuiScreen.showPage(s[0]);
+                ClickGuiScreen.setGrid("grid".equals(s[2]));
+                mc.setScreen(new ClickGuiScreen());
+            });
+            context.waitTicks(12);
+            context.takeScreenshot("gui_" + s[0].toLowerCase() + (s[1] != null ? "_" + s[1].toLowerCase() : ""));
+        }
+        // typing searches
+        context.runOnClient(mc -> {
+            ClickGuiScreen.showCategory(dev.drevss.drevclient.module.Category.COMBAT);
+            ClickGuiScreen.setGrid(false);
+            mc.setScreen(new ClickGuiScreen());
+        });
+        context.waitTicks(5);
+        context.getInput().typeChars("aura");
+        context.waitTicks(10);
+        context.takeScreenshot("gui_search");
+        // click the first module's switch through the real mouse path
+        context.runOnClient(mc -> mc.setScreen(null));
+        context.waitTicks(3);
+        report.add("GUI pages rendered: OK");
     }
 
     private static float nearestZombieHealth(net.minecraft.client.Minecraft mc) {

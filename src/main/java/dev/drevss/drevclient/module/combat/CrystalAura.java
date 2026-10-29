@@ -75,7 +75,7 @@ public class CrystalAura extends Module {
             double dmg = damage(crystal.position(), target);
             if (dmg > bestDmg) { bestDmg = dmg; best = crystal; }
         }
-        if (best == null || bestDmg < minDamage.getValue() * 0.5) return;
+        if (best == null || bestDmg < Math.min(minDamage.getValue(), 2)) return;
         if (rotate.isOn()) PlayerUtil.lookAt(best.position(), true);
         mc.gameMode.attack(mc.player, best);
         mc.player.swing(InteractionHand.MAIN_HAND);
@@ -133,23 +133,58 @@ public class CrystalAura extends Module {
         BlockState base = mc.level.getBlockState(pos);
         if (!base.is(Blocks.OBSIDIAN) && !base.is(Blocks.BEDROCK)) return false;
         BlockPos up = pos.above();
-        if (!mc.level.getBlockState(up).isAir() || !mc.level.getBlockState(up.above()).isAir()) return false;
+        if (!mc.level.getBlockState(up).isAir()) return false;
         AABB space = new AABB(up.getX(), up.getY(), up.getZ(), up.getX() + 1, up.getY() + 2, up.getZ() + 1);
         List<Entity> blocking = mc.level.getEntities((Entity) null, space, e -> !e.isSpectator() && e.isAlive());
         return blocking.isEmpty();
     }
 
     /**
-     * Rough explosion damage (power 6) using the vanilla falloff formula with a
-     * simple line-of-sight exposure check. Armor is ignored on purpose so the
-     * self-damage estimate stays on the safe side.
+     * Explosion damage (power 6) after armor, toughness, Protection/Blast
+     * Protection and Resistance, the way the server calculates it.
      */
     private double damage(Vec3 explosion, LivingEntity entity) {
         double dist = entity.position().distanceTo(explosion) / 12.0;
         if (dist > 1) return 0;
-        double exposure = exposure(explosion, entity);
-        double impact = (1 - dist) * exposure;
-        return (impact * impact + impact) / 2.0 * 7.0 * 12.0 + 1.0;
+        double impact = (1 - dist) * exposure(explosion, entity);
+        double raw = (impact * impact + impact) / 2.0 * 7.0 * 12.0 + 1.0;
+
+        if (entity instanceof net.minecraft.world.entity.player.Player) {
+            // difficulty scaling for players
+            switch (mc.level.getDifficulty()) {
+                case PEACEFUL -> raw = 0;
+                case EASY -> raw = Math.min(raw / 2 + 1, raw);
+                case HARD -> raw = raw * 1.5;
+                default -> { }
+            }
+        }
+
+        double armor = entity.getArmorValue();
+        double toughness = entity.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS);
+        double reduced = raw * (1 - Math.min(20, Math.max(armor / 5, armor - raw / (2 + toughness / 4))) / 25.0);
+
+        int epf = protectionPoints(entity);
+        reduced *= 1 - Math.min(20, epf) / 25.0;
+
+        var resistance = entity.getEffect(net.minecraft.world.effect.MobEffects.RESISTANCE);
+        if (resistance != null) reduced *= Math.max(0, 1 - 0.2 * (resistance.getAmplifier() + 1));
+        return Math.max(0, reduced);
+    }
+
+    private int protectionPoints(LivingEntity entity) {
+        var registry = mc.level.registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT);
+        var prot = registry.get(net.minecraft.world.item.enchantment.Enchantments.PROTECTION);
+        var blast = registry.get(net.minecraft.world.item.enchantment.Enchantments.BLAST_PROTECTION);
+        int points = 0;
+        for (var slot : new net.minecraft.world.entity.EquipmentSlot[] {
+            net.minecraft.world.entity.EquipmentSlot.HEAD, net.minecraft.world.entity.EquipmentSlot.CHEST,
+            net.minecraft.world.entity.EquipmentSlot.LEGS, net.minecraft.world.entity.EquipmentSlot.FEET }) {
+            var stack = entity.getItemBySlot(slot);
+            if (stack.isEmpty()) continue;
+            if (prot.isPresent()) points += net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(prot.get(), stack);
+            if (blast.isPresent()) points += 2 * net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(blast.get(), stack);
+        }
+        return points;
     }
 
     private double exposure(Vec3 from, Entity entity) {

@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [],
   "client": [
+    "AbstractClientPlayerMixin",
     "BlockStateBaseMixin",
     "CameraMixin",
     "ChatComponentMixin",
@@ -15,15 +16,20 @@
     "FogRendererMixin",
     "GameRendererMixin",
     "GuiMixin",
+    "IndigoBlockRenderInfoMixin",
     "KeyboardHandlerMixin",
     "LevelMixin",
+    "LiquidBlockRendererMixin",
     "LevelRendererMixin",
     "LocalPlayerMixin",
     "MinecraftMixin",
+    "ModelBlockRendererMixin",
     "MouseHandlerMixin",
     "MultiPlayerGameModeMixin",
+    "PlayerInfoMixin",
     "PlayerMixin",
-    "ScreenEffectRendererMixin"
+    "ScreenEffectRendererMixin",
+    "SectionOcclusionGraphMixin"
   ],
   "injectors": {
     "defaultRequire": 1

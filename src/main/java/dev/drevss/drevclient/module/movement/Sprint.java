@@ -8,6 +8,8 @@ import dev.drevss.drevclient.util.PlayerUtil;
 public class Sprint extends Module {
     private final BoolSetting omni = add(new BoolSetting("AllDirections", "Sprint sideways and backwards too", false));
 
+    public boolean allDirections() { return omni.isOn(); }
+
     public Sprint() {
         super("Sprint", "Sprints automatically", Category.MOVEMENT);
     }

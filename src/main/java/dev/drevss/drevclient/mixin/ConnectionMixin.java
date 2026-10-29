@@ -37,6 +37,7 @@ public abstract class ConnectionMixin extends SimpleChannelInboundHandler<Packet
             PacketEvent event = new PacketEvent(packet);
             DrevClient.get().modules().onPacketSend(event);
             if (event.isCancelled()) return;
+            packet = event.getPacket();
         }
         original.call(packet, listener, flush);
     }

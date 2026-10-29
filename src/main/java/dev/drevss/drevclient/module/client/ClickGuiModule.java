@@ -9,9 +9,9 @@ import dev.drevss.drevclient.setting.NumberSetting;
 import org.lwjgl.glfw.GLFW;
 
 public class ClickGuiModule extends Module {
-    public final ColorSetting accent = add(new ColorSetting("Accent", "Main GUI color", 0xFF9B5CFF));
-    public final NumberSetting opacity = add(new NumberSetting("Opacity", "Panel background opacity", 210, 60, 255, 5));
-    public final BoolSetting blur = add(new BoolSetting("DimBackground", "Darken the game behind the GUI", true));
+    public final ColorSetting accent = add(new ColorSetting("Accent", "Main GUI color", 0xFF8C7BFF));
+    public final NumberSetting opacity = add(new NumberSetting("Opacity", "Menu background opacity", 242, 120, 255, 5));
+    public final BoolSetting blur = add(new BoolSetting("BlurBackground", "Blur the game behind the menu", true));
     public final BoolSetting descriptions = add(new BoolSetting("Descriptions", "Show tooltips when hovering", true));
 
     public ClickGuiModule() {

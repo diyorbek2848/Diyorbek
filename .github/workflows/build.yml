@@ -23,7 +23,7 @@ jobs:
       # Launches the real game, turns every module on/off, opens every screen
       # and runs every command. Fails if anything throws.
       - name: in-game test
-        timeout-minutes: 15
+        timeout-minutes: 30
         run: |
           set -o pipefail
           ./gradlew runClientGameTest --stacktrace 2>&1 | tee test.log

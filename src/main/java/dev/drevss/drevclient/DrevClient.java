@@ -37,6 +37,7 @@ public class DrevClient implements ClientModInitializer {
     private ConfigManager config;
     private Hud hud;
     private DrevAI ai;
+    private dev.drevss.drevclient.skin.SkinManager skins;
 
     public static DrevClient get() { return instance; }
 
@@ -52,6 +53,7 @@ public class DrevClient implements ClientModInitializer {
         modules = new ModuleManager();
         hud = new Hud();
         ai = new DrevAI();
+        skins = new dev.drevss.drevclient.skin.SkinManager();
         config.load("default");
 
         ClientTickEvents.START_CLIENT_TICK.register(mc -> {
@@ -86,6 +88,10 @@ public class DrevClient implements ClientModInitializer {
             modules.get(AutoReconnect.class).onScreenInit(screen);
         });
 
+        ClientLifecycleEvents.CLIENT_STARTED.register(mc -> skins.load());
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, mc) ->
+            mc.execute(() -> modules.get(dev.drevss.drevclient.module.render.Freecam.class).setEnabledSilently(false)));
+
         ClientLifecycleEvents.CLIENT_STOPPING.register(mc -> config.save("default"));
 
         LOGGER.info("{} {} loaded with {} modules", NAME, VERSION, modules.all().size());
@@ -98,4 +104,5 @@ public class DrevClient implements ClientModInitializer {
     public ConfigManager config() { return config; }
     public Hud hud() { return hud; }
     public DrevAI ai() { return ai; }
+    public dev.drevss.drevclient.skin.SkinManager skins() { return skins; }
 }

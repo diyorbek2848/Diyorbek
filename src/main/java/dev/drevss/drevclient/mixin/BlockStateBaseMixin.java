@@ -21,6 +21,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class BlockStateBaseMixin {
     @Shadow public abstract FluidState getFluidState();
 
+    @Inject(method = "getShadeBrightness(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F",
+        at = @At("HEAD"), cancellable = true, require = 0)
+    private void drev$xrayShade(BlockGetter world, BlockPos pos, CallbackInfoReturnable<Float> cir) {
+        if (dev.drevss.drevclient.module.render.XRay.isActive()) cir.setReturnValue(1f);
+    }
+
     @Inject(
         method = "getCollisionShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;",
         at = @At("HEAD"), cancellable = true)

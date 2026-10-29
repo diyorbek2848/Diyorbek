@@ -61,4 +61,16 @@ public abstract class LocalPlayerMixin {
     private void drev$shift(CallbackInfoReturnable<Boolean> cir) {
         if (DrevClient.get() != null && DrevClient.get().modules().get(Freecam.class).isEnabled()) cir.setReturnValue(false);
     }
+
+    /** Sprint "AllDirections": keep sprinting while moving sideways or backwards. */
+    @WrapOperation(method = "shouldStopRunSprinting()Z",
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/ClientInput;hasForwardImpulse()Z"),
+        require = 0)
+    private boolean drev$omniSprint(ClientInput input, Operation<Boolean> original) {
+        if (DrevClient.get() != null) {
+            var sprint = DrevClient.get().modules().get(dev.drevss.drevclient.module.movement.Sprint.class);
+            if (sprint.isEnabled() && sprint.allDirections() && dev.drevss.drevclient.util.PlayerUtil.isMoving()) return true;
+        }
+        return original.call(input);
+    }
 }
