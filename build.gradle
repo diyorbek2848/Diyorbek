@@ -23,6 +23,8 @@ fabricApi.configureTests {
 	enableClientGameTests = true
 	modId = "drevclient_test"
 	username = "DrevSS"
+	// lets the test start an in-process dedicated server (Minecraft EULA: https://aka.ms/MinecraftEULA)
+	eula = true
 }
 
 loom {

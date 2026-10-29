@@ -34,6 +34,9 @@ jobs:
           path: build/libs/*.jar
       # Publishes the build log and the jar to the "build-output" branch so they
       # can be read without opening the Actions website.
+      - name: api dump
+        if: always() && hashFiles('ci/api-classes.txt') != ''
+        run: mkdir -p /tmp/out && ./ci/apidump.sh /tmp/out
       - name: publish build output
         if: always()
         run: |
