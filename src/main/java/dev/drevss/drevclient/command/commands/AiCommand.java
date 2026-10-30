@@ -18,10 +18,20 @@ public class AiCommand extends Command {
         DrevAIModule ai = DrevClient.get().modules().get(DrevAIModule.class);
         switch (args[0].toLowerCase()) {
             case "key" -> {
-                if (args.length < 2) throw usage();
-                ai.apiKey.set(args[1].trim());
-                DrevClient.get().config().save("default");
-                ChatUtil.success("DrevAI API key saved");
+                if (args.length < 2) throw new CommandException("Usage: .ai key sk-ant-... (paste your key with Ctrl+V)");
+                String key = dev.drevss.drevclient.ai.DrevAI.cleanKey(join(args, 1));
+                String problem = dev.drevss.drevclient.ai.DrevAI.keyProblem(key);
+                if (problem != null) throw new CommandException(problem + " Key not saved.");
+                ChatUtil.info("Checking the key with Anthropic\u2026");
+                DrevClient.get().ai().verifyKey(key, error -> {
+                    if (error == null) {
+                        ai.apiKey.set(key);
+                        DrevClient.get().config().save("default");
+                        ChatUtil.success("Key works and is saved. Ask away: .ai <question> or press J");
+                    } else {
+                        ChatUtil.error(error + " Key not saved.");
+                    }
+                });
                 return;
             }
             case "model" -> {

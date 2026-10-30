@@ -72,7 +72,7 @@ public class DrevClient implements ClientModInitializer {
 
         ClientSendMessageEvents.ALLOW_CHAT.register(message -> {
             if (message.startsWith(commands.getPrefix())) {
-                Minecraft.getInstance().gui.getChat().addRecentChat(message);
+                if (!message.toLowerCase().contains(" key ")) Minecraft.getInstance().gui.getChat().addRecentChat(message);
                 commands.execute(message.substring(commands.getPrefix().length()));
                 return false;
             }

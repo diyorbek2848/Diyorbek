@@ -66,6 +66,7 @@ public class DrevClientTest implements FabricClientGameTest {
             testRenderShowcase(context, sp);
             testFunctional(context, server, sp);
             testSkins(context);
+            testAiKeyChecks();
             testGui(context);
             testModules(context);
             testCommands(context);
@@ -347,6 +348,14 @@ public class DrevClientTest implements FabricClientGameTest {
         context.getInput().resizeWindow(854, 480);
         context.waitTicks(5);
         report.add("GUI pages rendered: OK");
+    }
+
+    private void testAiKeyChecks() {
+        check(dev.drevss.drevclient.ai.DrevAI.keyProblem(dev.drevss.drevclient.ai.DrevAI.cleanKey("<sk-proj-abc123>")) != null, "AI key: OpenAI key rejected");
+        check(dev.drevss.drevclient.ai.DrevAI.keyProblem("hello") != null, "AI key: random text rejected");
+        String good = "sk-ant-api03-" + "a".repeat(80);
+        check(dev.drevss.drevclient.ai.DrevAI.cleanKey(" <" + good + "> ").equals(good) && dev.drevss.drevclient.ai.DrevAI.keyProblem(good) == null,
+            "AI key: brackets and spaces stripped, valid format accepted");
     }
 
     private static float nearestZombieHealth(net.minecraft.client.Minecraft mc) {

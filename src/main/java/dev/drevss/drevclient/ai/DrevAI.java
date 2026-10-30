@@ -41,6 +41,75 @@ public class DrevAI {
     private volatile boolean busy;
 
     public List<ChatLine> transcript() { return transcript; }
+
+    /** Removes spaces, quotes and the <> people copy from the usage text. */
+    public static String cleanKey(String raw) {
+        return raw == null ? "" : raw.replaceAll("[\\s<>\"'`]", "");
+    }
+
+    /** Explains what's wrong with a key's format, or returns null if it looks right. */
+    public static String keyProblem(String key) {
+        if (key.isEmpty()) return "The key is empty.";
+        if (key.startsWith("sk-proj-") || (key.startsWith("sk-") && !key.startsWith("sk-ant-")))
+            return "That looks like an OpenAI key. DrevAI needs an Anthropic key (starts with sk-ant-).";
+        if (key.startsWith("AIza")) return "That looks like a Google key. DrevAI needs an Anthropic key (starts with sk-ant-).";
+        if (!key.startsWith("sk-ant-")) return "Anthropic API keys start with sk-ant-. Copy it again from console.anthropic.com.";
+        if (key.length() < 40) return "That key is too short, it was probably cut off while copying.";
+        return null;
+    }
+
+    private static String explain(int status, String apiMessage) {
+        return switch (status) {
+            case 401 -> "Anthropic says this API key is invalid (it was deleted, mistyped or cut off). "
+                + "Make a new one at console.anthropic.com > Settings > API keys and set it again.";
+            case 403 -> "This key isn't allowed to use the API: " + apiMessage;
+            case 400 -> apiMessage.toLowerCase().contains("credit")
+                ? "Your Anthropic account has no API credits. Add some at console.anthropic.com > Billing."
+                : "Request rejected: " + apiMessage;
+            case 404 -> "The model isn't available for your key. Pick another one in Settings > DrevAI > Model.";
+            case 429 -> "Too many requests or out of credits. Wait a minute or check Billing at console.anthropic.com.";
+            case 500, 529 -> "Anthropic is busy right now. Try again in a minute.";
+            default -> "API error " + status + ": " + apiMessage;
+        };
+    }
+
+    /** Calls the API once with the key and reports whether it works (callback runs on the render thread). */
+    public void verifyKey(String key, Consumer<String> callback) {
+        Thread t = new Thread(() -> {
+            String result;
+            try {
+                JsonObject body = new JsonObject();
+                body.addProperty("model", settings().model.get());
+                body.addProperty("max_tokens", 1);
+                JsonArray msgs = new JsonArray();
+                JsonObject m = new JsonObject();
+                m.addProperty("role", "user");
+                m.addProperty("content", "hi");
+                msgs.add(m);
+                body.add("messages", msgs);
+                HttpResponse<String> resp = http.send(HttpRequest.newBuilder(URI.create(ENDPOINT))
+                    .timeout(Duration.ofSeconds(30))
+                    .header("x-api-key", key)
+                    .header("anthropic-version", "2023-06-01")
+                    .header("content-type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(body.toString(), StandardCharsets.UTF_8))
+                    .build(), HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+                if (resp.statusCode() == 200) result = null;
+                else {
+                    String msg = resp.body();
+                    try { msg = JsonParser.parseString(resp.body()).getAsJsonObject().getAsJsonObject("error").get("message").getAsString(); }
+                    catch (Exception ignored) { }
+                    result = explain(resp.statusCode(), msg);
+                }
+            } catch (Exception e) {
+                result = "Couldn't reach api.anthropic.com (" + e.getClass().getSimpleName() + "). Check your internet connection.";
+            }
+            String r = result;
+            Minecraft.getInstance().execute(() -> callback.accept(r));
+        }, "DrevAI-KeyCheck");
+        t.setDaemon(true);
+        t.start();
+    }
     public boolean isBusy() { return busy; }
 
     public void reset() {
@@ -60,7 +129,7 @@ public class DrevAI {
         String key = settings().apiKey.get().trim();
         transcript.add(new ChatLine(true, question));
         if (key.isEmpty()) {
-            String msg = "No API key set. Get one at console.anthropic.com, then type: .ai key <your key>";
+            String msg = "No API key set. Get one at console.anthropic.com, then type: .ai key sk-ant-...";
             transcript.add(new ChatLine(false, msg));
             callback.accept(msg);
             return;
@@ -135,7 +204,7 @@ public class DrevAI {
             if (resp.statusCode() != 200) {
                 String err = json.has("error") ? json.getAsJsonObject("error").get("message").getAsString() : resp.body();
                 synchronized (history) { if (history.size() > 0) history.remove(history.size() - 1); }
-                return "API error " + resp.statusCode() + ": " + err;
+                return explain(resp.statusCode(), err);
             }
 
             JsonArray content = json.getAsJsonArray("content");

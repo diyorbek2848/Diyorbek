@@ -636,7 +636,25 @@ public class ClickGuiScreen extends Screen {
             float fw = Math.min(320, (right - x) * 0.55f);
             String shown = secret && !t.get().isEmpty() ? "•".repeat(Math.min(24, t.get().length())) : t.get();
             textField(fk, right - fw, cy - 15, fw, 30, shown, secret ? "Paste your key" : "", v -> {
-                if (!(secret && v.isBlank())) {
+                if (secret) {
+                    String key = dev.drevss.drevclient.ai.DrevAI.cleanKey(v);
+                    if (key.isEmpty()) return;
+                    String problem = dev.drevss.drevclient.ai.DrevAI.keyProblem(key);
+                    if (problem != null) {
+                        toast(problem);
+                        return;
+                    }
+                    toast("Checking key\u2026");
+                    DrevClient.get().ai().verifyKey(key, error -> {
+                        if (error == null) {
+                            t.set(key);
+                            changed(m, s);
+                            toast("Key works and is saved");
+                        } else toast(error.length() > 90 ? error.substring(0, 88) + "\u2026" : error);
+                    });
+                    return;
+                }
+                if (true) {
                     t.set(v.trim());
                     changed(m, s);
                 }
