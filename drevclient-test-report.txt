@@ -1,0 +1,133 @@
+DrevClient main menu: OK
+Mixin audit: OK
+Functional XRay hides stone and shows diamond ore: OK
+Functional XRay highlights the diamond (1): OK
+Functional BlockESP finds the spawner (1): OK
+Functional StorageESP finds the containers (4): OK
+Functional AutoTotem equips a totem: OK
+Functional KillAura attacks (health 20.0 -> 0.0): OK
+Functional Skin manager applies a PNG skin (drevclient:dynamic/custom_skin): OK
+Functional AI key: OpenAI key rejected: OK
+Functional AI key: random text rejected: OK
+Functional AI key: brackets and spaces stripped, valid format accepted: OK
+Functional Clicking a switch in the GUI toggles the module: OK
+GUI pages rendered: OK
+Module KillAura: OK
+Module CrystalAura: OK
+Module AutoTotem: OK
+Module AutoArmor: OK
+Module Criticals: OK
+Module Surround: OK
+Module BowAimbot: OK
+Module AutoWeapon: OK
+Module Velocity: OK
+Module AutoEat: OK
+Module AutoTool: OK
+Module AutoReplenish: OK
+Module FastUse: OK
+Module NoFall: OK
+Module AutoRespawn: OK
+Module InventoryTweaks: OK
+Module Reach: OK
+Module GuiUtils: OK
+Module Flight: OK
+Module Speed: OK
+Module Sprint: OK
+Module NoSlow: OK
+Module Step: OK
+Module Jesus: OK
+Module ElytraFly: OK
+Module Spider: OK
+Module AutoWalk: OK
+Module ESP: OK
+Module Tracers: OK
+Module Fullbright: OK
+Module Freecam: OK
+Module XRay: OK
+Module Nametags: OK
+Module StorageESP: OK
+Module BlockESP: OK
+Module Zoom: OK
+Module Trajectories: OK
+Module NoRender: OK
+Module Nuker: OK
+Module Scaffold: OK
+Module AutoFarm: OK
+Module LiquidFiller: OK
+Module Timer: OK
+Module StashFinder: OK
+Module InfinityMiner: OK
+Module AutoReconnect: OK
+Module Notifier: OK
+Module Spam: OK
+Module DiscordRPC: OK
+Module BetterChat: OK
+Module SoundBlocker: OK
+Module MiddleClickFriend: OK
+Module HUD: OK
+Command .help: OK
+Command .help bind: OK
+Command .modules: OK
+Command .binds: OK
+Command .toggle Sprint on: OK
+Command .toggle Sprint off: OK
+Command .sprint: OK
+Command .sprint: OK
+Command .bind Flight F: OK
+Command .bind Flight none: OK
+Command .bind Zoom C hold: OK
+Command .settings KillAura: OK
+Command .settings KillAura Range 5: OK
+Command .settings KillAura Range reset: OK
+Command .settings ESP Mode Both: OK
+Command .settings ESP PlayerColor #FF00FF: OK
+Command .settings ESP PlayerColor rainbow: OK
+Command .friend add Notch: OK
+Command .friend list: OK
+Command .friend remove Notch: OK
+Command .macro add K say hi; .help: OK
+Command .macro list: OK
+Command .macro remove K: OK
+Command .give diamond_sword: OK
+Command .give minecraft:golden_apple 16: OK
+Command .enchant sharpness 5: OK
+Command .enchant all: OK
+Command .config save citest: OK
+Command .config load citest: OK
+Command .prefix .: OK
+Command .drawn ESP: OK
+Command .drawn ESP: OK
+Command .hud list: OK
+Command .hud toggle Compass: OK
+Command .hud toggle Compass: OK
+Command .vclip 0: OK
+Command .hclip 0: OK
+Command .coords: OK
+Command .gui desync: OK
+Command .ai reset: OK
+Command .ai model claude-haiku-5-5: OK
+Command .ai model claude-sonnet-5-5: OK
+Functional Right Shift opens ClickGUI (screen=ClickGuiScreen): OK
+Functional J opens DrevAI (screen=DrevAIScreen): OK
+Functional Key bind toggles a module: OK
+Screens: OK
+Server NoFall: 30 block fall, health 20.0: OK
+Server Flight: hovered 6.5 s without kick (client y 211.9, server y 211.9): OK
+Server Flight: flew forward 15.3 blocks, server agrees: OK
+Server Flight: landing after flight without damage: OK
+Server Speed: moved 17.2 blocks in 1.5 s, server -3.32 200.00 0.50: OK
+Server Step: walked up a full block (server 5.89 201.00 0.50): OK
+Server Spider: climbed to y 208.4: OK
+Server Jesus: walking on water at 10.97 200.00 0.50: OK
+Server NoSlow: walked 8.4 blocks while blocking with a shield: OK
+Server Velocity: knockback moved the player 0.00 blocks: OK
+Server KillAura: zombie health on the server 0.0: OK
+Server Criticals: one hit left the zombie at 8.667999 (crit leaves 9.5, normal 13): OK
+Server Surround: obsidian placed on all 4 sides (server): OK
+Server CrystalAura: zombie health 0.0, your health 20.0: OK
+Server AutoTotem: totem in offhand on the server: OK
+Server BowAimbot: arrow hit a zombie 14 blocks behind you (health 16.0): OK
+Server Freecam: camera flew 20.0 blocks, body stayed put: OK
+Server ElytraFly: flew 26.8 blocks (gliding true): OK
+
+Errors: 0

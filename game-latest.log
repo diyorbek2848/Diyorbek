@@ -1,0 +1,940 @@
+[02:35:52] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.11 with Fabric Loader 0.20.1
+[02:35:52] [main/INFO] (FabricLoader) Loading 52 mods:
+	- drevclient 1.0.0+mc1.21.11
+	- drevclient_test 1.0.0
+	- fabric-api 0.141.6+1.21.11
+	- fabric-api-base 1.0.5+4ebb5c083e
+	- fabric-api-lookup-api-v1 1.6.114+20dc27073e
+	- fabric-biome-api-v1 17.1.1+4fc5413f3e
+	- fabric-block-api-v1 1.1.10+4ebb5c083e
+	- fabric-block-view-api-v2 1.0.39+4ebb5c083e
+	- fabric-client-gametest-api-v1 4.3.5+bfe9fcf43e
+	- fabric-command-api-v2 2.4.7+6b42a6003e
+	- fabric-content-registries-v0 10.2.14+4fc5413f3e
+	- fabric-convention-tags-v1 2.1.55+7f945d5b3e
+	- fabric-convention-tags-v2 2.17.3+8ef948ba3e
+	- fabric-crash-report-info-v1 0.3.23+4ebb5c083e
+	- fabric-data-attachment-api-v1 1.8.48+eed0806f3e
+	- fabric-data-generation-api-v1 23.5.0+88d7da613e
+	- fabric-dimensions-v1 4.0.28+4fc5413f3e
+	- fabric-entity-events-v1 3.1.1+1d0ab4303e
+	- fabric-events-interaction-v0 4.1.1+3b89ecf63e
+	- fabric-game-rule-api-v1 2.0.3+4fc5413f3e
+	- fabric-gametest-api-v1 3.1.27+4fc5413f3e
+	- fabric-item-api-v1 11.6.0+67f17bb43e
+	- fabric-item-group-api-v1 4.2.36+4fc5413f3e
+	- fabric-key-binding-api-v1 1.1.7+4fc5413f3e
+	- fabric-lifecycle-events-v1 2.6.15+4ebb5c083e
+	- fabric-loot-api-v2 3.0.73+3f89f5a53e
+	- fabric-loot-api-v3 2.0.20+78c8b4663e
+	- fabric-message-api-v1 6.1.12+4ebb5c083e
+	- fabric-model-loading-api-v1 6.0.15+4fc5413f3e
+	- fabric-networking-api-v1 5.1.6+6b6d71a53e
+	- fabric-object-builder-api-v1 21.1.40+4fc5413f3e
+	- fabric-particles-v1 4.2.12+4fc5413f3e
+	- fabric-recipe-api-v1 8.2.4+4ebb5c083e
+	- fabric-registry-sync-v0 6.2.6+1718722b3e
+	- fabric-renderer-api-v1 8.0.3+f4ffd2e53e
+	- fabric-renderer-indigo 5.0.3+f4ffd2e53e
+	- fabric-rendering-fluids-v1 3.1.43+4ebb5c083e
+	- fabric-rendering-v1 16.2.10+0290ad933e
+	- fabric-resource-conditions-api-v1 5.0.35+4fc5413f3e
+	- fabric-resource-loader-v0 3.3.4+4fc5413f3e
+	- fabric-resource-loader-v1 1.0.10+78c8b4663e
+	- fabric-screen-api-v1 3.1.7+4ebb5c083e
+	- fabric-screen-handler-api-v1 1.3.162+4fc5413f3e
+	- fabric-serialization-api-v1 1.0.5+4ebb5c083e
+	- fabric-sound-api-v1 1.0.51+4fc5413f3e
+	- fabric-tag-api-v1 1.3.0+88d7da613e
+	- fabric-transfer-api-v1 6.0.25+4fc5413f3e
+	- fabric-transitive-access-wideners-v1 7.1.0+014c8cec3e
+	- fabricloader 0.20.1
+	- java 25
+	- minecraft 1.21.11
+	- mixinextras 0.5.5
+[02:35:52] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/cef8519a91129d0c21fa03bb9378f0e8ca810e5/sponge-mixin-0.17.5+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[02:35:52] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[02:35:53] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[02:35:54] [Datafixer Bootstrap/INFO] (Minecraft) 287 Datafixer optimizations took 411 milliseconds
+[02:35:59] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[02:35:59] [Render thread/INFO] (Minecraft) Setting user: DrevSS
+[02:35:59] [Download-2/ERROR] (Minecraft) Failed to fetch user properties
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at knot//com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:59)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:150)
+	at knot//net.minecraft.client.Minecraft.method_55608(Minecraft.java:457)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:103)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:56)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:121)
+	... 5 more
+[02:36:00] [Render thread/INFO] (DrevClient) DrevClient 1.0.0 loaded with 57 modules
+[02:36:00] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[02:36:00] [Render thread/ERROR] (Minecraft) Illegal option value 0 for Anisotropic Filtering
+[02:36:00] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
+[02:36:06] [Render thread/INFO] (Minecraft) [STDERR]: [LWJGL] [ThreadLocalUtil] Unsupported JNI version detected, this may result in a crash. Please inform LWJGL developers.
+[02:36:06] [Render thread/INFO] (Minecraft) Using optional rendering extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access, GL_EXT_texture_filter_anisotropic
+[02:36:06] [Download-1/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[02:36:06] [Download-1/ERROR] (Minecraft) Failed to fetch Realms feature flags
+com.mojang.realmsclient.exception.RealmsServiceException: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC'
+	at knot//com.mojang.realmsclient.client.RealmsClient.execute(RealmsClient.java:526)
+	at knot//com.mojang.realmsclient.client.RealmsClient.fetchFeatureFlags(RealmsClient.java:186)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[02:36:06] [Render thread/ERROR] (Minecraft) Error while loading the narrator
+com.mojang.text2speech.Narrator$InitializeException: Failed to load library flite
+	at knot//com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:81)
+	at knot//com.mojang.text2speech.NarratorLinux.<init>(NarratorLinux.java:18)
+	at knot//com.mojang.text2speech.Narrator.getNarrator(Narrator.java:41)
+	at knot//net.minecraft.client.GameNarrator.<init>(GameNarrator.java:20)
+	at knot//net.minecraft.client.Minecraft.<init>(Minecraft.java:702)
+	at knot//net.minecraft.client.main.Main.main(Main.java:234)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+Caused by: java.lang.UnsatisfiedLinkError: Unable to load library 'flite':
+libflite.so: cannot open shared object file: No such file or directory
+libflite.so: cannot open shared object file: No such file or directory
+Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/Diyorbek/Diyorbek/build/classes/java/gametest:/home/runner/work/Diyorbek/Diyorbek/build/resources/gametest:/home/runner/.gradle/caches/fabric-loom/1.21.11/loom.mappings.1_21_11.layered+hash.253056520-v2/mappings.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/cef8519a91129d0c21fa03bb9378f0e8ca810e5/sponge-mixin-0.17.5+mixin.0.8.7.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-fabric/0.5.5/d1055b99c0ab08a8403fe2da3d79ca28e6340a76/mixinextras-fabric-0.5.5.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/dev-launch-injector/0.2.1+build.8/da8bef7e6e2f952da707f282bdb46882a0fce5e3/dev-launch-injector-0.2.1+build.8.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/fabric-log4j-util/1.0.2/ef0b3fb613356feb75a67d54f2fad6f03a006648/fabric-log4j-util-1.0.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/at.yawk.lz4/lz4-java/1.8.1/1f30a180ee04ccd53339a716aec13cae60a013b5/lz4-java-1.8.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.azure/azure-json/1.4.0/fcc1d354dbc3e0300e5276b1bf124d0247799cd8/azure-json-1.4.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.github.oshi/oshi-core/6.9.0/3224870731860cfcd7744581a05b559e94291e7/oshi-core-6.9.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.13.2/48b8230771e573b54ce6e867a9001e75977fe78e/gson-2.13.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.3/aeaffd00d57023a2c947393ed251f0354f0985fc/failureaccess-1.0.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/33.5.0-jre/8699de25f2f979108d6c1b804a7ba38cda1116bc/guava-33.5.0-jre.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/77.1/38693cf0b1d7362a8b726af74dc06026a7c23809/icu4j-77.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.microsoft.azure/msal4j/1.23.1/6c722b514873b24a4e1ce9c22dca36ea3c22bdbe/msal4j-1.23.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/authlib/7.0.61/efee1e6b54e863108576eb3b3ae71144626aaefc/authlib-7.0.61.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/blocklist/1.0.10/5c685c5ffa94c4cd39496c7184c1d122e515ecef/blocklist-1.0.10.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/brigadier/1.3.10/d15b53a14cf20fdcaa98f731af5dda654452c010/brigadier-1.3.10.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/datafixerupper/9.0.19/4e91f9712fa1e83231d1501625381b0210a977da/datafixerupper-9.0.19.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/jtracy/1.0.37/a3fb649b2e2b2288d2978f0b0bc3d83f62809d1e/jtracy-1.0.37.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/jtracy/1.0.37/e1b4395227af41195da9e2ead13c48ee0b7d31cd/jtracy-1.0.37-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/logging/1.6.11/fd147240733010c158249d986323f9ef98977fe/logging-1.6.11.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/patchy/2.2.10/da05971b07cbb379d002cf7eaec6a2048211fefc/patchy-2.2.10.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/text2speech/1.18.11/e853a12cdd6ba4f4836e8f4bf3b37844a13482b6/text2speech-1.18.11.jar:/home/runner/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.19.0/8c0dbe3ae883fceda9b50a6c76e745e548073388/commons-codec-1.19.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.20.0/36f3474daec2849c149e877614e7f979b2082cd2/commons-io-2.20.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.2.7.Final/5555ff561643bf2f8430fb57c24403c0efe15994/netty-buffer-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-base/4.2.7.Final/915e381ebabcf115f1c7ff7032d55c48afb50210/netty-codec-base-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-compression/4.2.7.Final/572341bc1ca90fd9d6e47f1d2694aab5258566e9/netty-codec-compression-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.2.7.Final/b734c108854099c421fd94d92d9f865e4d4da853/netty-codec-http-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.7.Final/11aa30df26af4fca3239ac1917f303a280f301e1/netty-common-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.2.7.Final/7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b/netty-handler-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.2.7.Final/5f3e5ef8de03992cd4fb46960dc0085ec1a12a12/netty-resolver-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.2.7.Final/1075c09f48a78eef9d819fbfd9096b903fdd362a/netty-transport-classes-epoll-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.2.7.Final/bdec7c23c75caabd848426d073c09568e8d5f94e/netty-transport-classes-kqueue-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.2.7.Final/98d02251c98c8f07a23ac5ea27657d9e0ef57614/netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.2.7.Final/e83998bfc10b5289d9bcbe807c4079ef0eed8e6f/netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.2.7.Final/89953f04259ea7502cffb313630dd51e00e60669/netty-transport-native-unix-common-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.2.7.Final/83ea548981d0d8c4a98027cc1a6f9624f902e142/netty-transport-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/it.unimi.dsi/fastutil/8.5.18/a6cff377eecc19c2037bf31568a6d7106b50ba1f/fastutil-8.5.18.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna-platform/5.17.0/a4934c44d25a9d8c2ddf4203affd20330cb3426f/jna-platform-5.17.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.17.0/33d12735bef894440780fce64f9758d420c7bae2/jna-5.17.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.sf.jopt-simple/jopt-simple/5.0.4/4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c/jopt-simple-5.0.4.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.28.0/e482f2c7a88dac3c497e96aa420b6a769f59c8d7/commons-compress-1.28.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.19.0/d6524b169a6574cd253760c472d419b47bfd37e6/commons-lang3-3.19.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.25.2/292c1a2b1702f1e1e3adb13e1c57e5bff60335ff/log4j-api-2.25.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.25.2/d4d0ad2e51e03e531f784891fbfff1bae1e13a12/log4j-core-2.25.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j2-impl/2.25.2/5eec0c392661dee8a366baec17e8896900dd978f/log4j-slf4j2-impl-2.25.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.8/fc0a71dad90a2cf41d82a76156a0e700af8e4f8d/joml-1.10.8.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.jspecify/jspecify/1.0.0/7425a601c1c7ec76645a78d22b8c6a627edee507/jspecify-1.0.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-freetype/3.3.3/a0db6c84a8becc8ca05f9dbfa985edc348a824c7/lwjgl-freetype-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-freetype/3.3.3/149070a5480900347071b7074779531f25a6e3dc/lwjgl-freetype-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.3.3/efa1eb78c5ccd840e9f329717109b5e892d72f8e/lwjgl-glfw-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.3.3/a03684c5e4b1b1dbbe0d29dbbdc27b985b6840f2/lwjgl-glfw-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.3.3/b543467b7ff3c6920539a88ee602d34098628be5/lwjgl-jemalloc-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.3.3/4f86728bf449b1dd61251c4e0ac01df1389cb51e/lwjgl-jemalloc-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.3.3/daada81ceb5fc0c291fbfdd4433cb8d9423577f2/lwjgl-openal-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.3.3/3037360cc4595079bea240af250b6d1a527e0905/lwjgl-openal-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.3.3/2f6b0147078396a58979125a4c947664e98293a/lwjgl-opengl-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.3.3/62c70a4b00ca5391882b0f4b787c1588d24f1c86/lwjgl-opengl-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.3.3/25dd6161988d7e65f71d5065c99902402ee32746/lwjgl-stb-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.3.3/fd1271ccd9d85eff2fa31f3fd543e02ccfaf5041/lwjgl-stb-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.3.3/82d755ca94b102e9ca77283b9e2dc46d1b15fbe5/lwjgl-tinyfd-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.3.3/d8d58daa0c3e5fd906fee96f5fddbcbc07cc308b/lwjgl-tinyfd-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.3/29589b5f87ed335a6c7e7ee6a5775f81f97ecb84/lwjgl-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.3/1713758e3660ba66e1e954396fd18126038b33c0/lwjgl-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.17/d9e58ac9c7779ba3bf8142aff6c830617a7fe60f/slf4j-api-2.0.17.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-140c2650ea/1.21.11-loom.mappings.1_21_11.layered+hash.253056520-v2/minecraft-merged-140c2650ea-1.21.11-loom.mappings.1_21_11.layered+hash.253056520-v2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.2.7.Final/40868fd4e43bce2798245f790624b58803dc26b6/netty-transport-native-kqueue-4.2.7.Final-osx-x86_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.2.7.Final/e5a0feef41410c8a5ae00c6cb4e0c99bd0aded6a/netty-transport-native-kqueue-4.2.7.Final-osx-aarch_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/fabric-loader/0.20.1/7c7f9831e9f27b303d5d08decb5f4258a9f03296/fabric-loader-0.20.1.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-9c5c8015/0.141.6+1.21.11/fabric-api-9c5c8015-0.141.6+1.21.11.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-9c5c8015/6.0.25+4fc5413f3e/fabric-transfer-api-v1-9c5c8015-6.0.25+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-9c5c8015/1.6.114+20dc27073e/fabric-api-lookup-api-v1-9c5c8015-1.6.114+20dc27073e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-9c5c8015/2.4.7+6b42a6003e/fabric-command-api-v2-9c5c8015-2.4.7+6b42a6003e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-9c5c8015/10.2.14+4fc5413f3e/fabric-content-registries-v0-9c5c8015-10.2.14+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-9c5c8015/23.5.0+88d7da613e/fabric-data-generation-api-v1-9c5c8015-23.5.0+88d7da613e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-9c5c8015/2.1.55+7f945d5b3e/fabric-convention-tags-v1-9c5c8015-2.1.55+7f945d5b3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-9c5c8015/2.17.3+8ef948ba3e/fabric-convention-tags-v2-9c5c8015-2.17.3+8ef948ba3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-9c5c8015/1.8.48+eed0806f3e/fabric-data-attachment-api-v1-9c5c8015-1.8.48+eed0806f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-9c5c8015/3.1.1+1d0ab4303e/fabric-entity-events-v1-9c5c8015-3.1.1+1d0ab4303e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-9c5c8015/4.1.1+3b89ecf63e/fabric-events-interaction-v0-9c5c8015-4.1.1+3b89ecf63e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-9c5c8015/2.0.3+4fc5413f3e/fabric-game-rule-api-v1-9c5c8015-2.0.3+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-9c5c8015/3.1.27+4fc5413f3e/fabric-gametest-api-v1-9c5c8015-3.1.27+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-9c5c8015/11.6.0+67f17bb43e/fabric-item-api-v1-9c5c8015-11.6.0+67f17bb43e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-9c5c8015/4.2.36+4fc5413f3e/fabric-item-group-api-v1-9c5c8015-4.2.36+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-9c5c8015/8.2.4+4ebb5c083e/fabric-recipe-api-v1-9c5c8015-8.2.4+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-9c5c8015/6.0.15+4fc5413f3e/fabric-model-loading-api-v1-9c5c8015-6.0.15+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-9c5c8015/5.0.3+f4ffd2e53e/fabric-renderer-indigo-9c5c8015-5.0.3+f4ffd2e53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-9c5c8015/8.0.3+f4ffd2e53e/fabric-renderer-api-v1-9c5c8015-8.0.3+f4ffd2e53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-9c5c8015/16.2.10+0290ad933e/fabric-rendering-v1-9c5c8015-16.2.10+0290ad933e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-9c5c8015/2.6.15+4ebb5c083e/fabric-lifecycle-events-v1-9c5c8015-2.6.15+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-9c5c8015/3.0.73+3f89f5a53e/fabric-loot-api-v2-9c5c8015-3.0.73+3f89f5a53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-9c5c8015/2.0.20+78c8b4663e/fabric-loot-api-v3-9c5c8015-2.0.20+78c8b4663e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-9c5c8015/6.1.12+4ebb5c083e/fabric-message-api-v1-9c5c8015-6.1.12+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-9c5c8015/4.2.12+4fc5413f3e/fabric-particles-v1-9c5c8015-4.2.12+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-9c5c8015/21.1.40+4fc5413f3e/fabric-object-builder-api-v1-9c5c8015-21.1.40+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-9c5c8015/1.3.162+4fc5413f3e/fabric-screen-handler-api-v1-9c5c8015-1.3.162+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-9c5c8015/6.2.6+1718722b3e/fabric-registry-sync-v0-9c5c8015-6.2.6+1718722b3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-9c5c8015/5.1.6+6b6d71a53e/fabric-networking-api-v1-9c5c8015-5.1.6+6b6d71a53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-9c5c8015/3.1.43+4ebb5c083e/fabric-rendering-fluids-v1-9c5c8015-3.1.43+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-9c5c8015/1.3.0+88d7da613e/fabric-tag-api-v1-9c5c8015-1.3.0+88d7da613e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-9c5c8015/3.3.4+4fc5413f3e/fabric-resource-loader-v0-9c5c8015-3.3.4+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-9c5c8015/1.0.10+78c8b4663e/fabric-resource-loader-v1-9c5c8015-1.0.10+78c8b4663e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-9c5c8015/3.1.7+4ebb5c083e/fabric-screen-api-v1-9c5c8015-3.1.7+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-9c5c8015/1.0.5+4ebb5c083e/fabric-api-base-9c5c8015-1.0.5+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-9c5c8015/17.1.1+4fc5413f3e/fabric-biome-api-v1-9c5c8015-17.1.1+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-9c5c8015/1.1.10+4ebb5c083e/fabric-block-api-v1-9c5c8015-1.1.10+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-9c5c8015/1.0.39+4ebb5c083e/fabric-block-view-api-v2-9c5c8015-1.0.39+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-9c5c8015/4.3.5+bfe9fcf43e/fabric-client-gametest-api-v1-9c5c8015-4.3.5+bfe9fcf43e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-9c5c8015/0.3.23+4ebb5c083e/fabric-crash-report-info-v1-9c5c8015-0.3.23+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-9c5c8015/4.0.28+4fc5413f3e/fabric-dimensions-v1-9c5c8015-4.0.28+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-9c5c8015/1.1.7+4fc5413f3e/fabric-key-binding-api-v1-9c5c8015-1.1.7+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-9c5c8015/5.0.35+4fc5413f3e/fabric-resource-conditions-api-v1-9c5c8015-5.0.35+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-9c5c8015/1.0.5+4ebb5c083e/fabric-serialization-api-v1-9c5c8015-1.0.5+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-9c5c8015/1.0.51+4fc5413f3e/fabric-sound-api-v1-9c5c8015-1.0.51+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-9c5c8015/7.1.0+014c8cec3e/fabric-transitive-access-wideners-v1-9c5c8015-7.1.0+014c8cec3e.jar:/home/runner/work/Diyorbek/Diyorbek/build/classes/java/main:/home/runner/work/Diyorbek/Diyorbek/build/resources/main)
+	at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:325)
+	at knot//com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:481)
+	at knot//com.sun.jna.NativeLibrary.getInstance(NativeLibrary.java:423)
+	at knot//com.mojang.text2speech.NarratorLinux$FliteLibrary.loadNative(NarratorLinux.java:79)
+	... 9 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at knot//com.sun.jna.Native.open(Native Method)
+		at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:213)
+		... 12 more
+	Suppressed: java.lang.UnsatisfiedLinkError: libflite.so: cannot open shared object file: No such file or directory
+		at knot//com.sun.jna.Native.open(Native Method)
+		at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:226)
+		... 12 more
+	Suppressed: java.io.IOException: Native library (linux-x86-64/libflite.so) not found in resource path (/home/runner/work/Diyorbek/Diyorbek/build/classes/java/gametest:/home/runner/work/Diyorbek/Diyorbek/build/resources/gametest:/home/runner/.gradle/caches/fabric-loom/1.21.11/loom.mappings.1_21_11.layered+hash.253056520-v2/mappings.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/cef8519a91129d0c21fa03bb9378f0e8ca810e5/sponge-mixin-0.17.5+mixin.0.8.7.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-fabric/0.5.5/d1055b99c0ab08a8403fe2da3d79ca28e6340a76/mixinextras-fabric-0.5.5.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/dev-launch-injector/0.2.1+build.8/da8bef7e6e2f952da707f282bdb46882a0fce5e3/dev-launch-injector-0.2.1+build.8.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/fabric-log4j-util/1.0.2/ef0b3fb613356feb75a67d54f2fad6f03a006648/fabric-log4j-util-1.0.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/at.yawk.lz4/lz4-java/1.8.1/1f30a180ee04ccd53339a716aec13cae60a013b5/lz4-java-1.8.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.azure/azure-json/1.4.0/fcc1d354dbc3e0300e5276b1bf124d0247799cd8/azure-json-1.4.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.github.oshi/oshi-core/6.9.0/3224870731860cfcd7744581a05b559e94291e7/oshi-core-6.9.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.13.2/48b8230771e573b54ce6e867a9001e75977fe78e/gson-2.13.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.3/aeaffd00d57023a2c947393ed251f0354f0985fc/failureaccess-1.0.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/33.5.0-jre/8699de25f2f979108d6c1b804a7ba38cda1116bc/guava-33.5.0-jre.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/77.1/38693cf0b1d7362a8b726af74dc06026a7c23809/icu4j-77.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.microsoft.azure/msal4j/1.23.1/6c722b514873b24a4e1ce9c22dca36ea3c22bdbe/msal4j-1.23.1.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/authlib/7.0.61/efee1e6b54e863108576eb3b3ae71144626aaefc/authlib-7.0.61.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/blocklist/1.0.10/5c685c5ffa94c4cd39496c7184c1d122e515ecef/blocklist-1.0.10.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/brigadier/1.3.10/d15b53a14cf20fdcaa98f731af5dda654452c010/brigadier-1.3.10.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/datafixerupper/9.0.19/4e91f9712fa1e83231d1501625381b0210a977da/datafixerupper-9.0.19.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/jtracy/1.0.37/a3fb649b2e2b2288d2978f0b0bc3d83f62809d1e/jtracy-1.0.37.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/jtracy/1.0.37/e1b4395227af41195da9e2ead13c48ee0b7d31cd/jtracy-1.0.37-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/logging/1.6.11/fd147240733010c158249d986323f9ef98977fe/logging-1.6.11.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/patchy/2.2.10/da05971b07cbb379d002cf7eaec6a2048211fefc/patchy-2.2.10.jar:/home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/text2speech/1.18.11/e853a12cdd6ba4f4836e8f4bf3b37844a13482b6/text2speech-1.18.11.jar:/home/runner/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.19.0/8c0dbe3ae883fceda9b50a6c76e745e548073388/commons-codec-1.19.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.20.0/36f3474daec2849c149e877614e7f979b2082cd2/commons-io-2.20.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.2.7.Final/5555ff561643bf2f8430fb57c24403c0efe15994/netty-buffer-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-base/4.2.7.Final/915e381ebabcf115f1c7ff7032d55c48afb50210/netty-codec-base-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-compression/4.2.7.Final/572341bc1ca90fd9d6e47f1d2694aab5258566e9/netty-codec-compression-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.2.7.Final/b734c108854099c421fd94d92d9f865e4d4da853/netty-codec-http-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.2.7.Final/11aa30df26af4fca3239ac1917f303a280f301e1/netty-common-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.2.7.Final/7ad8a1f851e2e6fe93cdd091871fda2b81c03b5b/netty-handler-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.2.7.Final/5f3e5ef8de03992cd4fb46960dc0085ec1a12a12/netty-resolver-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.2.7.Final/1075c09f48a78eef9d819fbfd9096b903fdd362a/netty-transport-classes-epoll-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.2.7.Final/bdec7c23c75caabd848426d073c09568e8d5f94e/netty-transport-classes-kqueue-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.2.7.Final/98d02251c98c8f07a23ac5ea27657d9e0ef57614/netty-transport-native-epoll-4.2.7.Final-linux-aarch_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.2.7.Final/e83998bfc10b5289d9bcbe807c4079ef0eed8e6f/netty-transport-native-epoll-4.2.7.Final-linux-x86_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.2.7.Final/89953f04259ea7502cffb313630dd51e00e60669/netty-transport-native-unix-common-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.2.7.Final/83ea548981d0d8c4a98027cc1a6f9624f902e142/netty-transport-4.2.7.Final.jar:/home/runner/.gradle/caches/modules-2/files-2.1/it.unimi.dsi/fastutil/8.5.18/a6cff377eecc19c2037bf31568a6d7106b50ba1f/fastutil-8.5.18.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna-platform/5.17.0/a4934c44d25a9d8c2ddf4203affd20330cb3426f/jna-platform-5.17.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.17.0/33d12735bef894440780fce64f9758d420c7bae2/jna-5.17.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.sf.jopt-simple/jopt-simple/5.0.4/4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c/jopt-simple-5.0.4.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.28.0/e482f2c7a88dac3c497e96aa420b6a769f59c8d7/commons-compress-1.28.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.19.0/d6524b169a6574cd253760c472d419b47bfd37e6/commons-lang3-3.19.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.25.2/292c1a2b1702f1e1e3adb13e1c57e5bff60335ff/log4j-api-2.25.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.25.2/d4d0ad2e51e03e531f784891fbfff1bae1e13a12/log4j-core-2.25.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j2-impl/2.25.2/5eec0c392661dee8a366baec17e8896900dd978f/log4j-slf4j2-impl-2.25.2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.8/fc0a71dad90a2cf41d82a76156a0e700af8e4f8d/joml-1.10.8.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.jspecify/jspecify/1.0.0/7425a601c1c7ec76645a78d22b8c6a627edee507/jspecify-1.0.0.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-freetype/3.3.3/a0db6c84a8becc8ca05f9dbfa985edc348a824c7/lwjgl-freetype-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-freetype/3.3.3/149070a5480900347071b7074779531f25a6e3dc/lwjgl-freetype-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.3.3/efa1eb78c5ccd840e9f329717109b5e892d72f8e/lwjgl-glfw-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.3.3/a03684c5e4b1b1dbbe0d29dbbdc27b985b6840f2/lwjgl-glfw-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.3.3/b543467b7ff3c6920539a88ee602d34098628be5/lwjgl-jemalloc-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.3.3/4f86728bf449b1dd61251c4e0ac01df1389cb51e/lwjgl-jemalloc-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.3.3/daada81ceb5fc0c291fbfdd4433cb8d9423577f2/lwjgl-openal-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.3.3/3037360cc4595079bea240af250b6d1a527e0905/lwjgl-openal-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.3.3/2f6b0147078396a58979125a4c947664e98293a/lwjgl-opengl-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.3.3/62c70a4b00ca5391882b0f4b787c1588d24f1c86/lwjgl-opengl-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.3.3/25dd6161988d7e65f71d5065c99902402ee32746/lwjgl-stb-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.3.3/fd1271ccd9d85eff2fa31f3fd543e02ccfaf5041/lwjgl-stb-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.3.3/82d755ca94b102e9ca77283b9e2dc46d1b15fbe5/lwjgl-tinyfd-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.3.3/d8d58daa0c3e5fd906fee96f5fddbcbc07cc308b/lwjgl-tinyfd-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.3/29589b5f87ed335a6c7e7ee6a5775f81f97ecb84/lwjgl-3.3.3.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.3/1713758e3660ba66e1e954396fd18126038b33c0/lwjgl-3.3.3-natives-linux.jar:/home/runner/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.17/d9e58ac9c7779ba3bf8142aff6c830617a7fe60f/slf4j-api-2.0.17.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-140c2650ea/1.21.11-loom.mappings.1_21_11.layered+hash.253056520-v2/minecraft-merged-140c2650ea-1.21.11-loom.mappings.1_21_11.layered+hash.253056520-v2.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.2.7.Final/40868fd4e43bce2798245f790624b58803dc26b6/netty-transport-native-kqueue-4.2.7.Final-osx-x86_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.2.7.Final/e5a0feef41410c8a5ae00c6cb4e0c99bd0aded6a/netty-transport-native-kqueue-4.2.7.Final-osx-aarch_64.jar:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/fabric-loader/0.20.1/7c7f9831e9f27b303d5d08decb5f4258a9f03296/fabric-loader-0.20.1.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-9c5c8015/0.141.6+1.21.11/fabric-api-9c5c8015-0.141.6+1.21.11.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transfer-api-v1-9c5c8015/6.0.25+4fc5413f3e/fabric-transfer-api-v1-9c5c8015-6.0.25+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-lookup-api-v1-9c5c8015/1.6.114+20dc27073e/fabric-api-lookup-api-v1-9c5c8015-1.6.114+20dc27073e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-command-api-v2-9c5c8015/2.4.7+6b42a6003e/fabric-command-api-v2-9c5c8015-2.4.7+6b42a6003e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-content-registries-v0-9c5c8015/10.2.14+4fc5413f3e/fabric-content-registries-v0-9c5c8015-10.2.14+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-generation-api-v1-9c5c8015/23.5.0+88d7da613e/fabric-data-generation-api-v1-9c5c8015-23.5.0+88d7da613e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v1-9c5c8015/2.1.55+7f945d5b3e/fabric-convention-tags-v1-9c5c8015-2.1.55+7f945d5b3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-convention-tags-v2-9c5c8015/2.17.3+8ef948ba3e/fabric-convention-tags-v2-9c5c8015-2.17.3+8ef948ba3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-data-attachment-api-v1-9c5c8015/1.8.48+eed0806f3e/fabric-data-attachment-api-v1-9c5c8015-1.8.48+eed0806f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-entity-events-v1-9c5c8015/3.1.1+1d0ab4303e/fabric-entity-events-v1-9c5c8015-3.1.1+1d0ab4303e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-events-interaction-v0-9c5c8015/4.1.1+3b89ecf63e/fabric-events-interaction-v0-9c5c8015-4.1.1+3b89ecf63e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-game-rule-api-v1-9c5c8015/2.0.3+4fc5413f3e/fabric-game-rule-api-v1-9c5c8015-2.0.3+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-gametest-api-v1-9c5c8015/3.1.27+4fc5413f3e/fabric-gametest-api-v1-9c5c8015-3.1.27+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-api-v1-9c5c8015/11.6.0+67f17bb43e/fabric-item-api-v1-9c5c8015-11.6.0+67f17bb43e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-item-group-api-v1-9c5c8015/4.2.36+4fc5413f3e/fabric-item-group-api-v1-9c5c8015-4.2.36+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-recipe-api-v1-9c5c8015/8.2.4+4ebb5c083e/fabric-recipe-api-v1-9c5c8015-8.2.4+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-model-loading-api-v1-9c5c8015/6.0.15+4fc5413f3e/fabric-model-loading-api-v1-9c5c8015-6.0.15+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-indigo-9c5c8015/5.0.3+f4ffd2e53e/fabric-renderer-indigo-9c5c8015-5.0.3+f4ffd2e53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-renderer-api-v1-9c5c8015/8.0.3+f4ffd2e53e/fabric-renderer-api-v1-9c5c8015-8.0.3+f4ffd2e53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-v1-9c5c8015/16.2.10+0290ad933e/fabric-rendering-v1-9c5c8015-16.2.10+0290ad933e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-lifecycle-events-v1-9c5c8015/2.6.15+4ebb5c083e/fabric-lifecycle-events-v1-9c5c8015-2.6.15+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v2-9c5c8015/3.0.73+3f89f5a53e/fabric-loot-api-v2-9c5c8015-3.0.73+3f89f5a53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-loot-api-v3-9c5c8015/2.0.20+78c8b4663e/fabric-loot-api-v3-9c5c8015-2.0.20+78c8b4663e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-message-api-v1-9c5c8015/6.1.12+4ebb5c083e/fabric-message-api-v1-9c5c8015-6.1.12+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-particles-v1-9c5c8015/4.2.12+4fc5413f3e/fabric-particles-v1-9c5c8015-4.2.12+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-object-builder-api-v1-9c5c8015/21.1.40+4fc5413f3e/fabric-object-builder-api-v1-9c5c8015-21.1.40+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-handler-api-v1-9c5c8015/1.3.162+4fc5413f3e/fabric-screen-handler-api-v1-9c5c8015-1.3.162+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-registry-sync-v0-9c5c8015/6.2.6+1718722b3e/fabric-registry-sync-v0-9c5c8015-6.2.6+1718722b3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-networking-api-v1-9c5c8015/5.1.6+6b6d71a53e/fabric-networking-api-v1-9c5c8015-5.1.6+6b6d71a53e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-rendering-fluids-v1-9c5c8015/3.1.43+4ebb5c083e/fabric-rendering-fluids-v1-9c5c8015-3.1.43+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-tag-api-v1-9c5c8015/1.3.0+88d7da613e/fabric-tag-api-v1-9c5c8015-1.3.0+88d7da613e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v0-9c5c8015/3.3.4+4fc5413f3e/fabric-resource-loader-v0-9c5c8015-3.3.4+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-loader-v1-9c5c8015/1.0.10+78c8b4663e/fabric-resource-loader-v1-9c5c8015-1.0.10+78c8b4663e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-screen-api-v1-9c5c8015/3.1.7+4ebb5c083e/fabric-screen-api-v1-9c5c8015-3.1.7+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-api-base-9c5c8015/1.0.5+4ebb5c083e/fabric-api-base-9c5c8015-1.0.5+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-biome-api-v1-9c5c8015/17.1.1+4fc5413f3e/fabric-biome-api-v1-9c5c8015-17.1.1+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-api-v1-9c5c8015/1.1.10+4ebb5c083e/fabric-block-api-v1-9c5c8015-1.1.10+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-block-view-api-v2-9c5c8015/1.0.39+4ebb5c083e/fabric-block-view-api-v2-9c5c8015-1.0.39+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-client-gametest-api-v1-9c5c8015/4.3.5+bfe9fcf43e/fabric-client-gametest-api-v1-9c5c8015-4.3.5+bfe9fcf43e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-crash-report-info-v1-9c5c8015/0.3.23+4ebb5c083e/fabric-crash-report-info-v1-9c5c8015-0.3.23+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-dimensions-v1-9c5c8015/4.0.28+4fc5413f3e/fabric-dimensions-v1-9c5c8015-4.0.28+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-key-binding-api-v1-9c5c8015/1.1.7+4fc5413f3e/fabric-key-binding-api-v1-9c5c8015-1.1.7+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-resource-conditions-api-v1-9c5c8015/5.0.35+4fc5413f3e/fabric-resource-conditions-api-v1-9c5c8015-5.0.35+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-serialization-api-v1-9c5c8015/1.0.5+4ebb5c083e/fabric-serialization-api-v1-9c5c8015-1.0.5+4ebb5c083e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-sound-api-v1-9c5c8015/1.0.51+4fc5413f3e/fabric-sound-api-v1-9c5c8015-1.0.51+4fc5413f3e.jar:/home/runner/work/Diyorbek/Diyorbek/.gradle/loom-cache/remapped_mods/remapped/net/fabricmc/fabric-api/fabric-transitive-access-wideners-v1-9c5c8015/7.1.0+014c8cec3e/fabric-transitive-access-wideners-v1-9c5c8015-7.1.0+014c8cec3e.jar:/home/runner/work/Diyorbek/Diyorbek/build/classes/java/main:/home/runner/work/Diyorbek/Diyorbek/build/resources/main)
+		at knot//com.sun.jna.Native.extractFromResourcePath(Native.java:1141)
+		at knot//com.sun.jna.NativeLibrary.loadLibrary(NativeLibrary.java:297)
+		... 12 more
+[02:36:06] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, drevclient, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-client-gametest-api-v1, fabric-command-api-v2, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-resource-loader-v1, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-serialization-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader
+[02:36:06] [Render thread/ERROR] (ModNioPackResources) Invalid path in mod resource-pack drevclient: drevclient:font/OFL-DMSans.txt, ignoring
+[02:36:06] [Render thread/ERROR] (ModNioPackResources) Invalid path in mod resource-pack drevclient: drevclient:font/OFL-InstrumentSerif.txt, ignoring
+[02:36:07] [Worker-Main-3/INFO] (Minecraft) Found unifont_all_no_pua-17.0.01.hex, loading
+[02:36:07] [Worker-Main-2/INFO] (Minecraft) Found unifont_pua-17.0.01.hex, loading
+[02:36:07] [Worker-Main-3/INFO] (Minecraft) Found unifont_jp_patch-17.0.01.hex, loading
+[02:36:09] [Render thread/ERROR] (Minecraft) Error starting SoundSystem. Turning off sounds & music
+java.lang.IllegalStateException: Failed to open OpenAL device
+	at knot//com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:292)
+	at knot//com.mojang.blaze3d.audio.Library.init(Library.java:150)
+	at knot//net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:119)
+	at knot//net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:109)
+	at knot//net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:122)
+	at knot//net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:41)
+	at knot//net.minecraft.server.packs.resources.SimplePreparableReloadListener.method_18790(SimplePreparableReloadListener.java:15)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:739)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:503)
+	at knot//net.minecraft.server.packs.resources.SimpleReloadInstance.method_67574(SimpleReloadInstance.java:59)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:169)
+	at knot//net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:143)
+	at knot//net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:124)
+	at knot//net.minecraft.client.Minecraft.runTick(Minecraft.java:1339)
+	at knot//net.minecraft.client.Minecraft.run$mixinextras$wrapped$284(Minecraft.java:966)
+	at knot//net.minecraft.client.Minecraft.mixinextras$bridge$run$mixinextras$wrapped$284$285(Minecraft.java)
+	at knot//net.minecraft.client.Minecraft.wrapMethod$zgi000$fabric-client-gametest-api-v1$onRun(Minecraft.java:4664)
+	at knot//net.minecraft.client.Minecraft.run(Minecraft.java)
+	at knot//net.minecraft.client.main.Main.main(Main.java:250)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23)
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86)
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 128x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 2048x1024x0 minecraft:textures/atlas/armor_trims.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 512x512x0 minecraft:textures/atlas/beds.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/signs.png-atlas
+[02:36:09] [Render thread/INFO] (Minecraft) Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+[02:36:13] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[02:36:13] [Test thread/INFO] (DrevClient Test) Main menu reached
+[02:36:15] [Render thread/INFO] (Minecraft) Loaded 1470 recipes
+[02:36:15] [Render thread/INFO] (Minecraft) Loaded 1584 advancements
+[02:36:15] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.GenericMessageScreen@6de51db4
+[02:36:15] [Render thread/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 65 new biomes in 1.628 ms
+[02:36:15] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.21.11
+[02:36:15] [Server thread/INFO] (Minecraft) Generating keypair
+[02:36:15] [Server thread/INFO] (Minecraft) Selecting global world spawn...
+[02:36:16] [Server thread/INFO] (Minecraft) Loading 0 persistent chunks...
+[02:36:16] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Server thread/INFO] (Minecraft) Loading 47 chunks for player spawn...
+[02:36:16] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[02:36:16] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:16] [Server thread/INFO] (Minecraft) Preparing spawn area: 16%
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Server thread/INFO] (Minecraft) Preparing spawn area: 100%
+[02:36:17] [Server thread/INFO] (Minecraft) Time elapsed: 1544 ms
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Server thread/INFO] (Minecraft) DrevSS[local:E:d70790cc] logged in with entity id 1 at (-2.5, -60.0, 0.5)
+[02:36:17] [Server thread/INFO] (Minecraft) DrevSS joined the game
+[02:36:17] [Server thread/INFO] (Minecraft) Changing view distance to 5, from 10
+[02:36:17] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:17] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[02:36:17] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:18] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:19] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:19] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:19] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@72d6ae28
+[02:36:19] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: null
+[02:36:19] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[02:36:20] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 32 reached during a single frame. New capacity will be 64.
+[02:36:20] [Test thread/INFO] (DrevClient Test) Auditing mixins
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.SmithingTrimRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.SingleItemRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.SmithingTransformRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.level.chunk.LevelChunkSection$1BlockCounter
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.data.models.ModelProvider
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.worldselection.EditGameRulesScreen$RuleList$1
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.server.commands.DebugConfigCommand
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.level.pathfinder.WalkNodeEvaluator
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.level.storage.loot.LootPool$Builder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.TransmuteRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.server.dedicated.DedicatedServer
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.tags.TagAppender
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.level.levelgen.NoiseChunk
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.commands.execution.CommandQueueEntry
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.debug.DebugOptionsScreen$OptionEntry
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.packs.PackSelectionModel
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.gametest.framework.GameTestServer
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.server.network.ServerGamePacketListenerImpl$1
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.tags.TagAppender$2
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.util.ParticleUtils
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.CompoundContainer
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.ConnectScreen
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.tags.TagAppender$1
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.tags.TagsProvider
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.SimpleCookingRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.SpecialRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.packs.TransferableSelectionList$PackEntry
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.ShapedRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.entity.npc.villager.VillagerTrades$EmeraldsForVillagerTypeItem
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.tags.TagBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.data.models.ModelProvider$ItemInfoCollector
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.renderer.state.MapRenderState$MapDecorationRenderState
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.server.Main
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.worldselection.EditGameRulesScreen$RuleList
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.RecipeOutput
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.level.storage.TagValueOutput
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.server.dedicated.ServerWatchdog
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.recipes.ShapelessRecipeBuilder
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.data.models.ModelProvider$BlockStateGeneratorCollector
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.entity.ai.behavior.GiveGiftToHero
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.loot.BlockLootSubProvider
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.renderer.block.MovingBlockRenderState
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.debug.DebugOptionsScreen$OptionList
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.commands.execution.tasks.BuildContexts
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.HashCache
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.entity.ai.behavior.WorkAtComposter
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.registries.RegistryPatchGenerator
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.HashCache$ProviderCache
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.server.dedicated.DedicatedServerProperties
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.world.level.pathfinder.PathfindingContext
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class com.mojang.brigadier.context.ContextChain
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.DataProvider
+[02:36:20] [Test thread/INFO] (FabricLoader/Mixin/audit) Force-loading class net.minecraft.data.loot.EntityLootSubProvider
+[02:36:20] [Server thread/INFO] (Minecraft) Set the time to 6000
+[02:36:20] [Server thread/INFO] (Minecraft) Set the weather to clear
+[02:36:20] [Server thread/INFO] (Minecraft) Incorrect argument for command
+[02:36:20] [Server thread/INFO] (Minecraft) gamerule doMobSpawning false<--[HERE]
+[02:36:20] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, -60.000000, 0.500000
+[02:36:20] [Server thread/INFO] (Minecraft) Successfully filled 130 block(s)
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at 2, -60, 6
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at 3, -60, 6
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at -2, -60, 6
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at -3, -60, 6
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at 0, -62, 4
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at 1, -62, 4
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at -1, -62, 4
+[02:36:20] [Server thread/INFO] (Minecraft) Changed the block at 0, -60, 10
+[02:36:20] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:36:20] [Server thread/INFO] (Minecraft) Summoned new Pig
+[02:36:20] [Server thread/INFO] (Minecraft) Summoned new Skeleton
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Set the time to 6000]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Set the weather to clear]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Teleported DrevSS to 0.500000, -60.000000, 0.500000]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Successfully filled 130 block(s)]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at 2, -60, 6]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at 3, -60, 6]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at -2, -60, 6]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at -3, -60, 6]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at 0, -62, 4]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at 1, -62, 4]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at -1, -62, 4]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Changed the block at 0, -60, 10]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Summoned new Zombie]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Summoned new Pig]
+[02:36:20] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Summoned new Skeleton]
+[02:36:22] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[02:36:22] [Render thread/INFO] (Minecraft) Resizing Chunk Sections UBO, capacity limit of 64 reached during a single frame. New capacity will be 128.
+[02:36:22] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, -60.000000, 0.500000
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fESP §aenabled
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTracers §aenabled
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNametags §aenabled
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStorageESP §aenabled
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBlockESP §aenabled
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fXRay §aenabled
+[02:36:22] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Teleported DrevSS to 0.500000, -60.000000, 0.500000]
+[02:36:24] [Render thread/INFO] (Minecraft) Resizing Dynamic Transforms UBO, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[02:36:24] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 2017ms or 40 ticks behind
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFreecam §aenabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFreecam §cdisabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fESP §cdisabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTracers §cdisabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNametags §cdisabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStorageESP §cdisabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBlockESP §cdisabled
+[02:36:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fXRay §cdisabled
+[02:36:25] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fXRay §aenabled
+[02:36:25] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBlockESP §aenabled
+[02:36:28] [Test thread/INFO] (DrevClient Test) Functional XRay hides stone and shows diamond ore OK
+[02:36:28] [Test thread/INFO] (DrevClient Test) Functional XRay highlights the diamond (1) OK
+[02:36:28] [Test thread/INFO] (DrevClient Test) Functional BlockESP finds the spawner (1) OK
+[02:36:28] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStorageESP §aenabled
+[02:36:29] [Test thread/INFO] (DrevClient Test) Functional StorageESP finds the containers (4) OK
+[02:36:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStorageESP §cdisabled
+[02:36:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fXRay §cdisabled
+[02:36:29] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBlockESP §cdisabled
+[02:36:29] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:36:29] [Server thread/INFO] (Minecraft) Gave 2 [Totem of Undying] to DrevSS
+[02:36:29] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Gave 2 [Totem of Undying] to DrevSS]
+[02:36:30] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTotem §aenabled
+[02:36:31] [Test thread/INFO] (DrevClient Test) Functional AutoTotem equips a totem OK
+[02:36:31] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTotem §cdisabled
+[02:36:31] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, -60.000000, 0.500000
+[02:36:31] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:36:31] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Diamond Sword]
+[02:36:31] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Teleported DrevSS to 0.500000, -60.000000, 0.500000]
+[02:36:31] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Summoned new Zombie]
+[02:36:31] [Render thread/INFO] (Minecraft) [System] [CHAT] [Server: Replaced a slot on DrevSS with [Diamond Sword]]
+[02:36:31] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fKillAura §aenabled
+[02:36:33] [Server thread/INFO] (Minecraft) DrevSS has made the advancement [Monster Hunter]
+[02:36:33] [Render thread/INFO] (Minecraft) [System] [CHAT] DrevSS has made the advancement [Monster Hunter]
+[02:36:33] [Render thread/INFO] (Minecraft) Loaded 44 advancements
+[02:36:34] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fKillAura §cdisabled
+[02:36:34] [Test thread/INFO] (DrevClient Test) Functional KillAura attacks (health 20.0 -> 0.0) OK
+[02:36:36] [Test thread/INFO] (DrevClient Test) Functional Skin manager applies a PNG skin (drevclient:dynamic/custom_skin) OK
+[02:36:36] [Test thread/INFO] (DrevClient Test) Functional AI key: OpenAI key rejected OK
+[02:36:36] [Test thread/INFO] (DrevClient Test) Functional AI key: random text rejected OK
+[02:36:36] [Test thread/INFO] (DrevClient Test) Functional AI key: brackets and spaces stripped, valid format accepted OK
+[02:36:42] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 2032ms or 40 ticks behind
+[02:36:59] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §aenabled
+[02:37:01] [Test thread/INFO] (DrevClient Test) Functional Clicking a switch in the GUI toggles the module OK
+[02:37:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §cdisabled
+[02:37:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fKillAura §aenabled
+[02:37:03] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fKillAura §cdisabled
+[02:37:03] [Test thread/INFO] (DrevClient Test) Module KillAura OK
+[02:37:03] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCrystalAura §aenabled
+[02:37:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCrystalAura §cdisabled
+[02:37:04] [Test thread/INFO] (DrevClient Test) Module CrystalAura OK
+[02:37:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTotem §aenabled
+[02:37:05] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTotem §cdisabled
+[02:37:05] [Test thread/INFO] (DrevClient Test) Module AutoTotem OK
+[02:37:05] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoArmor §aenabled
+[02:37:07] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoArmor §cdisabled
+[02:37:07] [Test thread/INFO] (DrevClient Test) Module AutoArmor OK
+[02:37:07] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCriticals §aenabled
+[02:37:08] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCriticals §cdisabled
+[02:37:08] [Test thread/INFO] (DrevClient Test) Module Criticals OK
+[02:37:08] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSurround §aenabled
+[02:37:08] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §cSurround: no obsidian in your hotbar
+[02:37:08] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSurround §cdisabled
+[02:37:09] [Test thread/INFO] (DrevClient Test) Module Surround OK
+[02:37:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBowAimbot §aenabled
+[02:37:11] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBowAimbot §cdisabled
+[02:37:11] [Test thread/INFO] (DrevClient Test) Module BowAimbot OK
+[02:37:11] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoWeapon §aenabled
+[02:37:11] [Server thread/WARN] (Minecraft) Can't keep up! Is the server overloaded? Running 13829ms or 276 ticks behind
+[02:37:12] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoWeapon §cdisabled
+[02:37:12] [Test thread/INFO] (DrevClient Test) Module AutoWeapon OK
+[02:37:12] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fVelocity §aenabled
+[02:37:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fVelocity §cdisabled
+[02:37:13] [Test thread/INFO] (DrevClient Test) Module Velocity OK
+[02:37:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoEat §aenabled
+[02:37:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoEat §cdisabled
+[02:37:15] [Test thread/INFO] (DrevClient Test) Module AutoEat OK
+[02:37:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTool §aenabled
+[02:37:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTool §cdisabled
+[02:37:16] [Test thread/INFO] (DrevClient Test) Module AutoTool OK
+[02:37:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoReplenish §aenabled
+[02:37:17] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoReplenish §cdisabled
+[02:37:17] [Test thread/INFO] (DrevClient Test) Module AutoReplenish OK
+[02:37:17] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFastUse §aenabled
+[02:37:19] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFastUse §cdisabled
+[02:37:19] [Test thread/INFO] (DrevClient Test) Module FastUse OK
+[02:37:19] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoFall §aenabled
+[02:37:20] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoFall §cdisabled
+[02:37:20] [Test thread/INFO] (DrevClient Test) Module NoFall OK
+[02:37:20] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoRespawn §aenabled
+[02:37:21] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoRespawn §cdisabled
+[02:37:22] [Test thread/INFO] (DrevClient Test) Module AutoRespawn OK
+[02:37:22] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fInventoryTweaks §aenabled
+[02:37:23] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fInventoryTweaks §cdisabled
+[02:37:23] [Test thread/INFO] (DrevClient Test) Module InventoryTweaks OK
+[02:37:23] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fReach §aenabled
+[02:37:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fReach §cdisabled
+[02:37:24] [Test thread/INFO] (DrevClient Test) Module Reach OK
+[02:37:24] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fGuiUtils §aenabled
+[02:37:25] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fGuiUtils §cdisabled
+[02:37:26] [Test thread/INFO] (DrevClient Test) Module GuiUtils OK
+[02:37:26] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFlight §aenabled
+[02:37:27] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFlight §cdisabled
+[02:37:27] [Test thread/INFO] (DrevClient Test) Module Flight OK
+[02:37:27] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpeed §aenabled
+[02:37:28] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpeed §cdisabled
+[02:37:28] [Test thread/INFO] (DrevClient Test) Module Speed OK
+[02:37:28] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §aenabled
+[02:37:30] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §cdisabled
+[02:37:30] [Test thread/INFO] (DrevClient Test) Module Sprint OK
+[02:37:30] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoSlow §aenabled
+[02:37:31] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoSlow §cdisabled
+[02:37:31] [Test thread/INFO] (DrevClient Test) Module NoSlow OK
+[02:37:31] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStep §aenabled
+[02:37:32] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStep §cdisabled
+[02:37:32] [Test thread/INFO] (DrevClient Test) Module Step OK
+[02:37:32] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fJesus §aenabled
+[02:37:34] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fJesus §cdisabled
+[02:37:34] [Test thread/INFO] (DrevClient Test) Module Jesus OK
+[02:37:34] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fElytraFly §aenabled
+[02:37:35] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fElytraFly §cdisabled
+[02:37:35] [Test thread/INFO] (DrevClient Test) Module ElytraFly OK
+[02:37:35] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpider §aenabled
+[02:37:36] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpider §cdisabled
+[02:37:36] [Test thread/INFO] (DrevClient Test) Module Spider OK
+[02:37:36] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoWalk §aenabled
+[02:37:38] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoWalk §cdisabled
+[02:37:38] [Test thread/INFO] (DrevClient Test) Module AutoWalk OK
+[02:37:38] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fESP §aenabled
+[02:37:39] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fESP §cdisabled
+[02:37:39] [Test thread/INFO] (DrevClient Test) Module ESP OK
+[02:37:39] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTracers §aenabled
+[02:37:40] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTracers §cdisabled
+[02:37:40] [Test thread/INFO] (DrevClient Test) Module Tracers OK
+[02:37:40] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFullbright §aenabled
+[02:37:42] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFullbright §cdisabled
+[02:37:42] [Test thread/INFO] (DrevClient Test) Module Fullbright OK
+[02:37:42] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFreecam §aenabled
+[02:37:43] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFreecam §cdisabled
+[02:37:43] [Test thread/INFO] (DrevClient Test) Module Freecam OK
+[02:37:43] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fXRay §aenabled
+[02:37:44] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fXRay §cdisabled
+[02:37:44] [Test thread/INFO] (DrevClient Test) Module XRay OK
+[02:37:44] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNametags §aenabled
+[02:37:46] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNametags §cdisabled
+[02:37:46] [Test thread/INFO] (DrevClient Test) Module Nametags OK
+[02:37:46] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStorageESP §aenabled
+[02:37:47] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStorageESP §cdisabled
+[02:37:47] [Test thread/INFO] (DrevClient Test) Module StorageESP OK
+[02:37:47] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBlockESP §aenabled
+[02:37:48] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBlockESP §cdisabled
+[02:37:49] [Test thread/INFO] (DrevClient Test) Module BlockESP OK
+[02:37:50] [Test thread/INFO] (DrevClient Test) Module Zoom OK
+[02:37:50] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTrajectories §aenabled
+[02:37:51] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTrajectories §cdisabled
+[02:37:51] [Test thread/INFO] (DrevClient Test) Module Trajectories OK
+[02:37:51] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoRender §aenabled
+[02:37:52] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoRender §cdisabled
+[02:37:53] [Test thread/INFO] (DrevClient Test) Module NoRender OK
+[02:37:53] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNuker §aenabled
+[02:37:54] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNuker §cdisabled
+[02:37:54] [Test thread/INFO] (DrevClient Test) Module Nuker OK
+[02:37:54] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fScaffold §aenabled
+[02:37:55] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fScaffold §cdisabled
+[02:37:55] [Test thread/INFO] (DrevClient Test) Module Scaffold OK
+[02:37:55] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoFarm §aenabled
+[02:37:57] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoFarm §cdisabled
+[02:37:57] [Test thread/INFO] (DrevClient Test) Module AutoFarm OK
+[02:37:57] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fLiquidFiller §aenabled
+[02:37:58] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fLiquidFiller §cdisabled
+[02:37:58] [Test thread/INFO] (DrevClient Test) Module LiquidFiller OK
+[02:37:58] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTimer §aenabled
+[02:37:59] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fTimer §cdisabled
+[02:37:59] [Test thread/INFO] (DrevClient Test) Module Timer OK
+[02:37:59] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStashFinder §aenabled
+[02:38:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStashFinder §cdisabled
+[02:38:01] [Test thread/INFO] (DrevClient Test) Module StashFinder OK
+[02:38:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7Tunneling south
+[02:38:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fInfinityMiner §aenabled
+[02:38:02] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fInfinityMiner §cdisabled
+[02:38:02] [Test thread/INFO] (DrevClient Test) Module InfinityMiner OK
+[02:38:02] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoReconnect §aenabled
+[02:38:03] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoReconnect §cdisabled
+[02:38:03] [Test thread/INFO] (DrevClient Test) Module AutoReconnect OK
+[02:38:03] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNotifier §aenabled
+[02:38:05] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNotifier §cdisabled
+[02:38:05] [Test thread/INFO] (DrevClient Test) Module Notifier OK
+[02:38:05] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpam §aenabled
+[02:38:06] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpam §cdisabled
+[02:38:06] [Test thread/INFO] (DrevClient Test) Module Spam OK
+[02:38:06] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §cSet your Discord application id first: .settings DiscordRPC AppId <id>
+[02:38:06] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fDiscordRPC §aenabled
+[02:38:07] [Test thread/INFO] (DrevClient Test) Module DiscordRPC OK
+[02:38:07] [Render thread/INFO] (Minecraft) [System] [CHAT] [02:38] §5[§dDrev§5]§r §fBetterChat §aenabled
+[02:38:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBetterChat §cdisabled
+[02:38:09] [Test thread/INFO] (DrevClient Test) Module BetterChat OK
+[02:38:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSoundBlocker §aenabled
+[02:38:10] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSoundBlocker §cdisabled
+[02:38:10] [Test thread/INFO] (DrevClient Test) Module SoundBlocker OK
+[02:38:11] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fMiddleClickFriend §cdisabled
+[02:38:11] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fMiddleClickFriend §aenabled
+[02:38:11] [Test thread/INFO] (DrevClient Test) Module MiddleClickFriend OK
+[02:38:13] [Test thread/INFO] (DrevClient Test) Module HUD OK
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7§dDrevClient commands §7(21):
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.help [command] §8- §7Lists commands or explains one
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.toggle <module> [on|off] §8- §7Turns a module on or off
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.bind <module> <key|none> [hold] §8- §7Binds a module to a key (add 'hold' for hold-to-use)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.binds §8- §7Lists all key binds
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.settings <module> [setting] [value|reset] §8- §7Shows or changes module settings
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.friend <add|remove|list|clear> [name] §8- §7Manages friends (combat modules ignore them)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.macro <add|remove|list> [key] [actions; separated; by semicolons] §8- §7Runs chat lines, /commands or .commands when a key is pressed
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.give <item> [count] §8- §7Creative only: puts an item in your hand
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.enchant <enchantment|all> [level] §8- §7Creative only: enchants the held item (any level up to 255)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.ai <question|key <key>|model <name>|open|reset> §8- §7Ask DrevAI anything about the client or the game (it can search the web)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.config <save|load> [name] §8- §7Saves or loads a named config
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.prefix <symbol> §8- §7Changes the command prefix
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.drawn <module> §8- §7Shows or hides a module in the HUD list
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.hud [edit|list|toggle <element>] §8- §7Opens the HUD editor or toggles HUD elements
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.vclip <blocks> §8- §7Teleports you up or down
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.hclip <blocks> §8- §7Teleports you forward or backward
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.gui <restore|close|desync> §8- §7UI utils: reopen a saved GUI, soft close or desync
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.coords §8- §7Copies your coordinates to the clipboard
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.panic §8- §7Turns every module off
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.modules §8- §7Lists every module
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §d.say <message> §8- §7Sends a chat message that starts with the prefix
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §7Tip: §d.<module>§7 toggles a module, Right Shift opens the GUI
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7§d.bind <module> <key|none> [hold]§7 - Binds a module to a key (add 'hold' for hold-to-use)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dCombat: §7KillAura§8, §7CrystalAura§8, §7AutoTotem§8, §7AutoArmor§8, §7Criticals§8, §7Surround§8, §7BowAimbot§8, §7AutoWeapon§8, §7Velocity
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dPlayer: §7AutoEat§8, §7AutoTool§8, §7AutoReplenish§8, §7FastUse§8, §7NoFall§8, §7AutoRespawn§8, §7InventoryTweaks§8, §7Reach§8, §7GuiUtils
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dMovement: §7Flight§8, §7Speed§8, §7Sprint§8, §7NoSlow§8, §7Step§8, §7Jesus§8, §7ElytraFly§8, §7Spider§8, §7AutoWalk
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dRender: §7ESP§8, §7Tracers§8, §7Fullbright§8, §7Freecam§8, §7XRay§8, §7Nametags§8, §7StorageESP§8, §7BlockESP§8, §7Zoom§8, §7Trajectories§8, §7NoRender
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dWorld: §7Nuker§8, §7Scaffold§8, §7AutoFarm§8, §7LiquidFiller§8, §7Timer§8, §7StashFinder§8, §7InfinityMiner
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dMisc: §7AutoReconnect§8, §7Notifier§8, §7Spam§8, §7DiscordRPC§8, §7BetterChat§8, §7SoundBlocker§8, §aMiddleClickFriend
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §dClient: §7ClickGUI§8, §aHUD§8, §aClient§8, §7DrevAI§8, §7Panic
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7Binds:
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fZoom §8- §dC §7(hold)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fClickGUI §8- §dRSHIFT
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fDrevAI §8- §dJ
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §aenabled
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §cdisabled
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §aenabled
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §cdisabled
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aBound Flight to F
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aUnbound Flight
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aBound Zoom to C (hold)
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7§dKillAura§7: Automatically attacks entities around you
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fRange §8= §d4.2 §8[1.0 - 6.0] §7Attack reach in blocks
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fPriority §8= §dDistance §8[Distance, Health, Angle] §7Which target to pick first
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fRotate §8= §dSilent §8[Silent, Camera, None] §7How to face the target
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fCooldown §8= §dON §7Wait for full attack charge
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fCPS §8= §d10 §8[1.0 - 20.0] §7Clicks per second when cooldown is off
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fPlayers §8= §dON §7Attack players
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fMobs §8= §dON §7Attack hostile mobs
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fAnimals §8= §dOFF §7Attack animals
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fInvisibles §8= §dOFF §7Attack invisible entities
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fThroughWalls §8= §dOFF §7Attack without line of sight
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT]   §fOnlyWeapon §8= §dOFF §7Only attack while holding a sword/axe
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aKillAura Range set to 5.0
+[02:38:13] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aRange reset to 4.2
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aESP Mode set to Both
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aESP PlayerColor set to #FFFF00FF
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aESP PlayerColor set to Rainbow
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aAdded Notch as a friend
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7Friends (1): notch
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aRemoved Notch
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aMacro on K: say hi; .help
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7Macros:
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §dK §8- §fsay hi; .help
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aRemoved macro on K
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aGave 1x Diamond Sword
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aGave 16x Golden Apple
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aEnchanted with minecraft:sharpness 5
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aApplied 0 enchantments
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aSaved config 'citest'
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aLoaded config 'citest'
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aPrefix is now .
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aESP is hidden in the module list
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aESP is shown in the module list
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aWatermark
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aModuleList
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aCoords
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aFPS
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aPing
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aSpeed
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aDirection
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aTime
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aServer
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aDurability
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aTotems
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aArmor
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aCompass
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT]   §aPotions
+[02:38:14] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aCompass hidden
+[02:38:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aCompass shown
+[02:38:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aCopied 0 -61 9
+[02:38:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §7Sent close packet, the GUI stays open on your side
+[02:38:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aDrevAI conversation cleared
+[02:38:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aDrevAI model: claude-haiku-5-5
+[02:38:15] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aDrevAI model: claude-sonnet-5-5
+[02:38:15] [Test thread/INFO] (DrevClient Test) Functional Right Shift opens ClickGUI (screen=ClickGuiScreen) OK
+[02:38:16] [Test thread/INFO] (DrevClient Test) Functional J opens DrevAI (screen=DrevAIScreen) OK
+[02:38:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aBound Sprint to R
+[02:38:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §aenabled
+[02:38:16] [Test thread/INFO] (DrevClient Test) Functional Key bind toggles a module OK
+[02:38:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSprint §cdisabled
+[02:38:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §aUnbound Sprint
+[02:38:18] [Server thread/INFO] (Minecraft) DrevSS lost connection: Disconnected
+[02:38:18] [Server thread/INFO] (Minecraft) DrevSS left the game
+[02:38:18] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
+[02:38:18] [Server thread/INFO] (Minecraft) Stopping server
+[02:38:18] [Server thread/INFO] (Minecraft) Saving players
+[02:38:18] [Server thread/INFO] (Minecraft) Saving worlds
+[02:38:18] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[DrevClient Test]'/minecraft:overworld
+[02:38:18] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[DrevClient Test]'/minecraft:the_end
+[02:38:18] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[DrevClient Test]'/minecraft:the_nether
+[02:38:18] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DrevClient Test): All chunks are saved
+[02:38:18] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[02:38:18] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[02:38:18] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[02:38:19] [Render thread/INFO] (Minecraft) Loaded 1470 recipes
+[02:38:19] [Render thread/INFO] (Minecraft) Loaded 1584 advancements
+[02:38:19] [Thread-18/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[02:38:19] [Thread-18/INFO] (Minecraft) Loaded 1470 recipes
+[02:38:19] [Thread-18/INFO] (Minecraft) Loaded 1584 advancements
+[02:38:19] [Thread-18/INFO] (BiomeModificationImpl) Applied 0 biome modifications to 0 of 65 new biomes in 394.4 μs
+[02:38:19] [Server thread/INFO] (Minecraft) Starting minecraft server version 1.21.11
+[02:38:19] [Server thread/INFO] (Minecraft) Loading properties
+[02:38:19] [Server thread/INFO] (Minecraft) Default game type: SURVIVAL
+[02:38:19] [Server thread/INFO] (Minecraft) Generating keypair
+[02:38:19] [Server thread/INFO] (Minecraft) Starting Minecraft server on *:25565
+[02:38:19] [Server thread/WARN] (Minecraft) **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[02:38:19] [Server thread/WARN] (Minecraft) The server will make no attempt to authenticate usernames. Beware.
+[02:38:19] [Server thread/WARN] (Minecraft) While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[02:38:19] [Server thread/WARN] (Minecraft) To change this, set "online-mode" to "true" in the server.properties file.
+[02:38:19] [Server thread/INFO] (Minecraft) Preparing level "world"
+[02:38:20] [Server thread/INFO] (Minecraft) Selecting global world spawn...
+[02:38:20] [Server thread/INFO] (Minecraft) Loading 0 persistent chunks...
+[02:38:20] [Server thread/INFO] (Minecraft) Preparing spawn area: 100%
+[02:38:20] [Server thread/INFO] (Minecraft) Time elapsed: 234 ms
+[02:38:20] [Server thread/INFO] (Minecraft) Done (0.237s)! For help, type "help"
+[02:38:20] [Render thread/ERROR] (Minecraft) ########## GL ERROR ##########
+[02:38:20] [Render thread/ERROR] (Minecraft) @ Render
+[02:38:20] [Render thread/ERROR] (Minecraft) 65547: X11: Standard cursor shape unavailable
+[02:38:20] [Render thread/INFO] (Minecraft) Connecting to localhost, 25565
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Download-3/ERROR] (Minecraft) Failed to retrieve profile key pair
+com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:103)
+	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.post(MinecraftClient.java:64)
+	at knot//com.mojang.authlib.yggdrasil.YggdrasilUserApiService.getKeyPair(YggdrasilUserApiService.java:61)
+	at knot//net.minecraft.client.multiplayer.AccountProfileKeyPairManager.fetchProfileKeyPair(AccountProfileKeyPairManager.java:128)
+	at knot//net.minecraft.client.multiplayer.AccountProfileKeyPairManager.method_44291(AccountProfileKeyPairManager.java:77)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:20] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: null screen: net.minecraft.client.gui.screens.ConnectScreen@4be76e1e
+[02:38:21] [Server thread/INFO] (Minecraft) DrevSS[/127.0.0.1:51288] logged in with entity id 29 at (9.5, -60.0, -5.5)
+[02:38:21] [Server thread/INFO] (Minecraft) DrevSS joined the game
+[02:38:21] [Render thread/INFO] (Minecraft) Loaded 2 advancements
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@1e6d2956
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@1e6d2956
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@1e6d2956
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: net.minecraft.client.gui.screens.LevelLoadingScreen@1e6d2956
+[02:38:21] [Render thread/INFO] (fabric-client-gametest-api-v1) World loading finished: ClientLevel screen: null
+[02:38:24] [Server thread/INFO] (Minecraft) Incorrect argument for command
+[02:38:24] [Server thread/INFO] (Minecraft) gamerule doMobSpawning false<--[HERE]
+[02:38:24] [Server thread/INFO] (Minecraft) Incorrect argument for command
+[02:38:24] [Server thread/INFO] (Minecraft) gamerule doDaylightCycle false<--[HERE]
+[02:38:24] [Server thread/INFO] (Minecraft) The difficulty did not change; it is already set to normal
+[02:38:24] [Server thread/INFO] (Minecraft) Set the time to 6000
+[02:38:24] [Server thread/INFO] (Minecraft) Successfully filled 2601 block(s)
+[02:38:24] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:25] [Test thread/INFO] (DrevClient ServerTest) === server test NoFall
+[02:38:25] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:25] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:25] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:25] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:25] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:25] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:38:25] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoFall §aenabled
+[02:38:25] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 230.000000, 0.500000
+[02:38:27] [Test thread/INFO] (DrevClient ServerTest) NoFall: 30 block fall, health 20.0 OK
+[02:38:27] [Test thread/INFO] (DrevClient ServerTest) === server test Flight
+[02:38:27] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:27] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:27] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:27] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:27] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:27] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:38:28] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFlight §aenabled
+[02:38:35] [Test thread/INFO] (DrevClient ServerTest) Flight: hovered 6.5 s without kick (client y 211.9, server y 211.9) OK
+[02:38:37] [Test thread/INFO] (DrevClient ServerTest) Flight: flew forward 15.3 blocks, server agrees OK
+[02:38:37] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFlight §cdisabled
+[02:38:37] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoFall §aenabled
+[02:38:38] [Test thread/INFO] (DrevClient ServerTest) Flight: landing after flight without damage OK
+[02:38:38] [Test thread/INFO] (DrevClient ServerTest) === server test Speed
+[02:38:38] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:38] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:38] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:38] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:38] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:38] [Server thread/INFO] (Minecraft) Teleported DrevSS to -20.500000, 200.000000, 0.500000
+[02:38:38] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpeed §aenabled
+[02:38:41] [Test thread/INFO] (DrevClient ServerTest) Speed: moved 17.2 blocks in 1.5 s, server -3.32 200.00 0.50 OK
+[02:38:41] [Test thread/INFO] (DrevClient ServerTest) === server test Step
+[02:38:41] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:41] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:41] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:41] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:41] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:41] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:38:41] [Server thread/INFO] (Minecraft) Successfully filled 126 block(s)
+[02:38:41] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fStep §aenabled
+[02:38:43] [Test thread/INFO] (DrevClient ServerTest) Step: walked up a full block (server 5.89 201.00 0.50) OK
+[02:38:43] [Server thread/INFO] (Minecraft) Successfully filled 126 block(s)
+[02:38:43] [Test thread/INFO] (DrevClient ServerTest) === server test Spider
+[02:38:43] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:43] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:43] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:43] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:43] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:43] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:38:43] [Server thread/INFO] (Minecraft) Successfully filled 147 block(s)
+[02:38:43] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpider §aenabled
+[02:38:46] [Test thread/INFO] (DrevClient ServerTest) Spider: climbed to y 208.4 OK
+[02:38:46] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSpider §cdisabled
+[02:38:46] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoFall §aenabled
+[02:38:47] [Test thread/INFO] (DrevClient ServerTest) === server test Jesus
+[02:38:47] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:47] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:47] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:47] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:47] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:47] [Server thread/INFO] (Minecraft) Teleported DrevSS to 4.500000, 200.000000, 0.500000
+[02:38:47] [Server thread/INFO] (Minecraft) Successfully filled 135 block(s)
+[02:38:47] [Server thread/INFO] (Minecraft) Successfully filled 270 block(s)
+[02:38:48] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fJesus §aenabled
+[02:38:48] [Render thread/INFO] (Minecraft) Loaded 12 advancements
+[02:38:50] [Test thread/INFO] (DrevClient ServerTest) Jesus: walking on water at 10.97 200.00 0.50 OK
+[02:38:50] [Server thread/INFO] (Minecraft) Successfully filled 405 block(s)
+[02:38:50] [Test thread/INFO] (DrevClient ServerTest) === server test NoSlow
+[02:38:50] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:50] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:50] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:50] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:50] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:50] [Server thread/INFO] (Minecraft) Teleported DrevSS to -20.500000, 200.000000, 0.500000
+[02:38:50] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Shield]
+[02:38:50] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoSlow §aenabled
+[02:38:52] [Test thread/INFO] (DrevClient ServerTest) NoSlow: walked 8.4 blocks while blocking with a shield OK
+[02:38:52] [Test thread/INFO] (DrevClient ServerTest) === server test Velocity
+[02:38:52] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:52] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:52] [Server thread/INFO] (Minecraft) No entity was found
+[02:38:52] [Server thread/INFO] (Minecraft) Removed 1 item(s) from player DrevSS
+[02:38:52] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:52] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:38:53] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:38:53] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fVelocity §aenabled
+[02:38:53] [Server thread/INFO] (Minecraft) Applied 1.0 damage to DrevSS
+[02:38:54] [Test thread/INFO] (DrevClient ServerTest) Velocity: knockback moved the player 0.00 blocks OK
+[02:38:54] [Test thread/INFO] (DrevClient ServerTest) === server test KillAura
+[02:38:54] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:54] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:54] [Server thread/INFO] (Minecraft) Killed Zombie
+[02:38:54] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:38:54] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:54] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:38:55] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Diamond Sword]
+[02:38:55] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:38:55] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fKillAura §aenabled
+[02:38:57] [Server thread/INFO] (Minecraft) DrevSS has made the advancement [Monster Hunter]
+[02:38:57] [Render thread/INFO] (Minecraft) [System] [CHAT] DrevSS has made the advancement [Monster Hunter]
+[02:38:57] [Render thread/INFO] (Minecraft) Loaded 54 advancements
+[02:38:59] [Test thread/INFO] (DrevClient ServerTest) KillAura: zombie health on the server 0.0 OK
+[02:38:59] [Test thread/INFO] (DrevClient ServerTest) === server test Criticals
+[02:38:59] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:38:59] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:38:59] [Server thread/INFO] (Minecraft) Killed 2 entities
+[02:38:59] [Server thread/INFO] (Minecraft) Removed 1 item(s) from player DrevSS
+[02:38:59] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:38:59] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:00] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Diamond Sword]
+[02:39:00] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:39:01] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCriticals §aenabled
+[02:39:02] [Test thread/INFO] (DrevClient ServerTest) Criticals: one hit left the zombie at 8.667999 (crit leaves 9.5, normal 13) OK
+[02:39:02] [Test thread/INFO] (DrevClient ServerTest) === server test Surround
+[02:39:02] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:39:02] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:39:02] [Server thread/INFO] (Minecraft) Killed Zombie
+[02:39:02] [Server thread/INFO] (Minecraft) Removed 1 item(s) from player DrevSS
+[02:39:02] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:39:02] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:02] [Server thread/INFO] (Minecraft) DrevSS has made the advancement [Ice Bucket Challenge]
+[02:39:02] [Server thread/INFO] (Minecraft) Gave 16 [Obsidian] to DrevSS
+[02:39:02] [Render thread/INFO] (Minecraft) [System] [CHAT] DrevSS has made the advancement [Ice Bucket Challenge]
+[02:39:02] [Render thread/INFO] (Minecraft) Loaded 65 advancements
+[02:39:02] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSurround §aenabled
+[02:39:04] [Test thread/INFO] (DrevClient ServerTest) Surround: obsidian placed on all 4 sides (server) OK
+[02:39:04] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fSurround §cdisabled
+[02:39:04] [Server thread/INFO] (Minecraft) Successfully filled 4 block(s)
+[02:39:04] [Test thread/INFO] (DrevClient ServerTest) === server test CrystalAura
+[02:39:04] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:39:04] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:39:04] [Server thread/INFO] (Minecraft) Killed Rotten Flesh
+[02:39:04] [Server thread/INFO] (Minecraft) Removed 12 item(s) from player DrevSS
+[02:39:04] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:39:04] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:04] [Server thread/INFO] (Minecraft) Applied effect Resistance to DrevSS
+[02:39:04] [Server thread/INFO] (Minecraft) Gave 16 [End Crystal] to DrevSS
+[02:39:04] [Server thread/INFO] (Minecraft) Successfully filled 9 block(s)
+[02:39:04] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:39:05] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCrystalAura §aenabled
+[02:39:09] [Test thread/INFO] (DrevClient ServerTest) CrystalAura: zombie health 0.0, your health 20.0 OK
+[02:39:09] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fCrystalAura §cdisabled
+[02:39:09] [Server thread/INFO] (Minecraft) Successfully filled 9 block(s)
+[02:39:09] [Test thread/INFO] (DrevClient ServerTest) === server test AutoTotem
+[02:39:09] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:39:09] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:39:09] [Server thread/INFO] (Minecraft) Killed 5 entities
+[02:39:09] [Server thread/INFO] (Minecraft) Removed 15 item(s) from player DrevSS
+[02:39:09] [Server thread/INFO] (Minecraft) Removed every effect from DrevSS
+[02:39:09] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:10] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Totem of Undying]
+[02:39:10] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fAutoTotem §aenabled
+[02:39:11] [Test thread/INFO] (DrevClient ServerTest) AutoTotem: totem in offhand on the server OK
+[02:39:11] [Test thread/INFO] (DrevClient ServerTest) === server test BowAimbot
+[02:39:11] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:39:11] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:39:11] [Server thread/INFO] (Minecraft) No entity was found
+[02:39:11] [Server thread/INFO] (Minecraft) Removed 1 item(s) from player DrevSS
+[02:39:11] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:39:11] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:11] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Bow]
+[02:39:11] [Server thread/INFO] (Minecraft) Gave 16 [Arrow] to DrevSS
+[02:39:11] [Server thread/INFO] (Minecraft) Summoned new Zombie
+[02:39:11] [Render thread/INFO] (Minecraft) Loaded 66 advancements
+[02:39:12] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fBowAimbot §aenabled
+[02:39:15] [Test thread/INFO] (DrevClient ServerTest) BowAimbot: arrow hit a zombie 14 blocks behind you (health 16.0) OK
+[02:39:15] [Test thread/INFO] (DrevClient ServerTest) === server test Freecam
+[02:39:15] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:39:15] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:39:15] [Server thread/INFO] (Minecraft) Killed 2 entities
+[02:39:15] [Server thread/INFO] (Minecraft) Removed 16 item(s) from player DrevSS
+[02:39:15] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:39:15] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:16] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFreecam §aenabled
+[02:39:17] [Test thread/INFO] (DrevClient ServerTest) Freecam: camera flew 20.0 blocks, body stayed put OK
+[02:39:17] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fFreecam §cdisabled
+[02:39:17] [Test thread/INFO] (DrevClient ServerTest) === server test ElytraFly
+[02:39:17] [Server thread/INFO] (Minecraft) No blocks were filled
+[02:39:17] [Server thread/INFO] (Minecraft) Too many blocks in the specified area (maximum 32768, but specified 80631)
+[02:39:17] [Server thread/INFO] (Minecraft) Killed Rotten Flesh
+[02:39:17] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:39:17] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:39:17] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:18] [Server thread/INFO] (Minecraft) DrevSS has reached the goal [Sky's the Limit]
+[02:39:18] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Elytra]
+[02:39:18] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 225.000000, 0.500000
+[02:39:18] [Render thread/INFO] (Minecraft) [System] [CHAT] DrevSS has reached the goal [Sky's the Limit]
+[02:39:18] [Render thread/INFO] (Minecraft) Loaded 71 advancements
+[02:39:18] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fElytraFly §aenabled
+[02:39:18] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fNoFall §aenabled
+[02:39:20] [Test thread/INFO] (DrevClient ServerTest) ElytraFly: flew 26.8 blocks (gliding true) OK
+[02:39:20] [Render thread/INFO] (Minecraft) [System] [CHAT] §5[§dDrev§5]§r §fElytraFly §cdisabled
+[02:39:20] [Server thread/INFO] (Minecraft) Replaced a slot on DrevSS with [Air]
+[02:39:20] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:20] [Server thread/INFO] (Minecraft) No entity was found
+[02:39:20] [Server thread/INFO] (Minecraft) No items were found on player DrevSS
+[02:39:20] [Server thread/INFO] (Minecraft) Target has no effects to remove
+[02:39:20] [Server thread/INFO] (Minecraft) Teleported DrevSS to 0.500000, 200.000000, 0.500000
+[02:39:21] [Server thread/INFO] (Minecraft) Stopping server
+[02:39:21] [Server thread/INFO] (Minecraft) Saving players
+[02:39:21] [Server thread/INFO] (Minecraft) DrevSS lost connection: Disconnected
+[02:39:21] [Server thread/INFO] (Minecraft) DrevSS left the game
+[02:39:21] [Server thread/INFO] (Minecraft) Saving worlds
+[02:39:21] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[02:39:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[02:39:22] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[02:39:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (world): All chunks are saved
+[02:39:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[02:39:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[02:39:22] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[02:39:22] [IO-Worker-18/INFO] (Minecraft) Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC
+[02:39:22] [IO-Worker-18/ERROR] (Minecraft) Couldn't connect to realms
+com.mojang.realmsclient.exception.RealmsServiceException: Realms authentication error with message 'java.lang.RuntimeException: Failed to parse into SignedJWT: FabricMC'
+	at knot//com.mojang.realmsclient.client.RealmsClient.execute(RealmsClient.java:526)
+	at knot//com.mojang.realmsclient.client.RealmsClient.clientCompatible(RealmsClient.java:307)
+	at knot//com.mojang.realmsclient.RealmsAvailability.method_52627(RealmsAvailability.java:48)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1789)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[02:39:22] [Test thread/INFO] (DrevClient Test) All DrevClient tests passed
+[02:39:22] [Render thread/INFO] (Minecraft) Stopping!
